@@ -70,9 +70,13 @@ def traverse_path(v, add_v, visited, prevV):
 # Finds all leaf paths in G and sets all vertices in path to visited
 def find_all_leaf_paths(G):
     leaves = [v for v in G.nodes if len(list(G.neighbors(v))) == 1]
-    for leaf in leaves:
-        visited = len(list(G.nodes)) * [False]
-        traverse_path(leaf, False, visited, None)
+    if not leaves:
+        return
+    visited = len(list(G.nodes)) * [False]
+    # for leaf in leaves:
+    #     visited = len(list(G.nodes)) * [False]
+    #     traverse_path(leaf, False, visited, None)
+    traverse_path(leaves[0], False, visited, None)
 
 
 # Gets the weight of specified edge
@@ -116,11 +120,6 @@ def nodes_left():
     return n - np.count_nonzero([sum(x) for x in zip(optional, all_visited)]) + 1
 
 
-def connected():
-    all_sets = dj_set.get_all_sets()
-    return len(all_sets) == 1
-
-
 # Calculates heuristic of u based on all non-visited, non-optional neighbors
 def calculate_heuristic(u, v):
     sum = 0
@@ -132,6 +131,13 @@ def calculate_heuristic(u, v):
     return sum / (weight((u, v)) * nodes_left())
 
 
+def surrounded(v):
+    for u in list(G.neighbors(v)):
+        if not required[u] and not optional[u]:
+            return False
+    return True
+
+
 # Solve helper to greedily find next optimal edge according to heuristic and add it
 def solve_graph(G, q):
     while q:
@@ -139,7 +145,7 @@ def solve_graph(G, q):
         v = e[0]
         if np.count_nonzero([sum(x) for x in zip(optional, all_visited)]) == n:
             return
-        if all_visited[v]:
+        if all_visited[v] or surrounded(v):
             continue
         visit(v, e)
         print(T.nodes)
@@ -156,13 +162,6 @@ def initialize_pq(q):
             for u in list(G.neighbors(i)):
                 if not all_visited[u]:
                     q.put((-calculate_heuristic(u, i), (u, i)))
-
-
-def connectGraph():
-    return
-    # TODO: create a mini network graph (2 dummy nodes and all node elements of every dijoint set pair)
-    # TODO: find shortest path between every set and every other set (if exists)
-    # TODO: run MST on this resulting graph
 
 
 # Original solve method
@@ -191,8 +190,6 @@ def solve(inputGraph):
     q = PriorityQueue()
     initialize_pq(q)
     solve_graph(G, q)
-    if not connected():
-        connectGraph()
 
     print(required)
     print(T.nodes)
@@ -370,23 +367,6 @@ print()
 test4()
 print()
 test5()
-
-#Messed up code:
-
-# def connectGraph():
-#     edges = list(G.edges)
-#     edges.sort(key=lambda x: weight(x))
-#     for e in edges:
-#         if connected():
-#             break;
-#         g1 = dj_set.find(e[0])
-#         g2 = dj_set.find(e[1])
-#         if g1 and g2:
-#             if dj_set.find(e[0]) != dj_set.find(e[1]):
-#                 visit(e[0], e)
-#     if connected():
-#         return
-#     optionals = [v for v in list(G.nodes) if optional[v]]
 
 
 

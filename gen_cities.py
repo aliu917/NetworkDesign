@@ -29,7 +29,7 @@ def add_edges(edges):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Gen cities.')
     parser.add_argument('--num_cities',  type=int, required=True)
-    parser.add_argument('--map_size', type=int, required=True)
+    parser.add_argument('--map_size', type=int, default=100)
     args = parser.parse_args()
 
     # set city_rank, the folder to put this data file in
@@ -46,8 +46,9 @@ if __name__ == "__main__":
         print('num cities <= 0. Aborting')
         sys.exit()
 
-    if args.map_size <= 0 or args.map_size >= 100:
-        print('map size not in (0, 100). Aborting')
+    if args.map_size <= 0 or args.map_size > 100:
+        print('map size not in (0, 100]. Aborting')
+        # Random number generation doesn't include the upper bound
         sys.exit()
 
     # Sample more edges until all vertices are included
@@ -61,7 +62,7 @@ if __name__ == "__main__":
         add_edges(edges)
 
     # Make the folder
-    foldername = "./" + str(city_rank) + '/' 
+    foldername = "./inputs/" + str(city_rank) + '/' 
     Path(foldername).mkdir(parents=True, exist_ok=True)
 
     # Store in a .in file
@@ -77,5 +78,3 @@ if __name__ == "__main__":
             else:
                 f.write(str(int(u)) + " " + str(int(v)) + " " + ("%.3f" % (np.random.random() * args.map_size)) + "\n")
     f.close()
-
-    print(edges)

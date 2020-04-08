@@ -5,6 +5,7 @@ import sys
 
 from queue import PriorityQueue
 import numpy as np
+from disjoint_set import DisjointSet
 
 # Global variables
 G = None
@@ -13,6 +14,7 @@ required = []
 all_visited = []
 optional = []
 T = None
+dj_set = None
 
 
 # Initializes global variables to correct sizes
@@ -20,21 +22,27 @@ def instantiate_arrays():
     global required
     global optional
     global all_visited
+    global dj_set
     required = n * [False]
     optional = n * [False]
     all_visited = n * [False]
+    dj_set = DisjointSet(n)
 
 
 # Adds vertex v to T and assigns neighbors to optional visiting
 def visit(v, edge=None, optionals=True):
     all_visited[v] = True
     required[v] = True
+    optional[v] = False
+    dj_set.makeSet(v)
     T.add_node(v)
     if edge:
         T.add_edge(edge[0], edge[1], weight=weight(edge))
+        dj_set.union(edge[0], edge[1])
     if optionals:
         for u in list(G.neighbors(v)):
-            optional[u] = True
+            if not required[u]:
+                optional[u] = True
 
 
 # Helper for finding all leaf paths -- Traverses each leaf path to trim off non-cycle elements
@@ -90,6 +98,8 @@ def maxHeuristic(G):
     maxH = 0
     maxV = -1
     for v in list(G.nodes):
+        if (len(list(G.neighbors(v))) == n - 1):  # Special case when one vertex is connected to all of them
+            return v
         minVEdge = minEdge([weight(e) for e in list(G.edges(v))])
         # h = sum([minEdge([weight(e, G) for e in list(G.edges(u)) if e[0] != v and e[1] != v]) for u in list(G.neighbors(v))]) / minVEdge
         h = sum([minEdgeWeight(u, v) * len(list(G.edges(u))) for u in list(G.neighbors(v))]) / minVEdge
@@ -106,6 +116,11 @@ def nodes_left():
     return n - np.count_nonzero([sum(x) for x in zip(optional, all_visited)]) + 1
 
 
+def connected():
+    all_sets = dj_set.get_all_sets()
+    return len(all_sets) == 1
+
+
 # Calculates heuristic of u based on all non-visited, non-optional neighbors
 def calculate_heuristic(u, v):
     sum = 0
@@ -113,8 +128,8 @@ def calculate_heuristic(u, v):
         if required[x] or optional[x]:
             continue
         sum += minEdgeWeight(x, u) * len(list(G.edges(x)))
-    print(u, " to ", v, "h:", sum / (weight((u, v)) ** 2 * nodes_left()))
-    return sum / (weight((u, v)) ** 2 * nodes_left())
+    print(u, " to ", v, "h:", sum / (weight((u, v)) * nodes_left()))
+    return sum / (weight((u, v)) * nodes_left())
 
 
 # Solve helper to greedily find next optimal edge according to heuristic and add it
@@ -122,24 +137,32 @@ def solve_graph(G, q):
     while q:
         e = q.get()[1]
         v = e[0]
-        if (np.count_nonzero([sum(x) for x in zip(optional, all_visited)]) == n):
+        if np.count_nonzero([sum(x) for x in zip(optional, all_visited)]) == n:
             return
         if all_visited[v]:
             continue
         visit(v, e)
+        print(T.nodes)
         print("Calculating heuristics after visiting", v)
         for u in list(G.neighbors(v)):
             if not all_visited[u]:
-                q.put((-calculate_heuristic(u, v), (u,v)))
+                q.put((-calculate_heuristic(u, v), (u, v)))
 
 
 # Initializes the pq with beginning elements
 def initialize_pq(q):
     for i in range(len(required)):
-        if (required[i]):
+        if required[i]:
             for u in list(G.neighbors(i)):
                 if not all_visited[u]:
-                    q.put((-calculate_heuristic(u, i), (u,i)))
+                    q.put((-calculate_heuristic(u, i), (u, i)))
+
+
+def connectGraph():
+    return
+    # TODO: create a mini network graph (2 dummy nodes and all node elements of every dijoint set pair)
+    # TODO: find shortest path between every set and every other set (if exists)
+    # TODO: run MST on this resulting graph
 
 
 # Original solve method
@@ -168,11 +191,13 @@ def solve(inputGraph):
     q = PriorityQueue()
     initialize_pq(q)
     solve_graph(G, q)
+    if not connected():
+        connectGraph()
+
     print(required)
+    print(T.nodes)
     print(T.edges)
     return T
-
-
 
 
 def test():
@@ -192,6 +217,8 @@ def test():
 
 
 def test2():
+    print("test 2: center weights 2 outer weights 1")
+    print("should be center vertex and 6")
     G = nx.Graph()
     G.add_nodes_from([0, 1, 2, 3, 4, 5, 6, 7])
     G.add_edge(0, 1, weight=2)
@@ -208,9 +235,81 @@ def test2():
     G.add_edge(6, 1, weight=1)
     G.add_edge(6, 7, weight=1)
     solve(G)
+    print()
+    test2_1()
+
+
+def test2_1():
+    print("test 2-1: center weights 4 outside weights 1")
+    print("Should be not center vertex")
+    G = nx.Graph()
+    G.add_nodes_from([0, 1, 2, 3, 4, 5, 6, 7])
+    G.add_edge(0, 1, weight=4)
+    G.add_edge(0, 2, weight=4)
+    G.add_edge(0, 3, weight=4)
+    G.add_edge(0, 4, weight=4)
+    G.add_edge(0, 5, weight=4)
+    G.add_edge(0, 6, weight=4)
+    G.add_edge(1, 2, weight=1)
+    G.add_edge(2, 3, weight=1)
+    G.add_edge(3, 4, weight=1)
+    G.add_edge(4, 5, weight=1)
+    G.add_edge(5, 6, weight=1)
+    G.add_edge(6, 1, weight=1)
+    G.add_edge(6, 7, weight=1)
+    solve(G)
+    print()
+    test2_2()
+
+def test2_2():
+    print("test 2-1: center weights 3 outside weights 1")
+    print("Should be center vertex")
+    G = nx.Graph()
+    G.add_nodes_from([0, 1, 2, 3, 4, 5, 6, 7])
+    G.add_edge(0, 1, weight=3)
+    G.add_edge(0, 2, weight=3)
+    G.add_edge(0, 3, weight=3)
+    G.add_edge(0, 4, weight=3)
+    G.add_edge(0, 5, weight=3)
+    G.add_edge(0, 6, weight=3)
+    G.add_edge(1, 2, weight=1)
+    G.add_edge(2, 3, weight=1)
+    G.add_edge(3, 4, weight=1)
+    G.add_edge(4, 5, weight=1)
+    G.add_edge(5, 6, weight=1)
+    G.add_edge(6, 1, weight=1)
+    G.add_edge(6, 7, weight=1)
+    solve(G)
+    print()
+    test2_3()
+
+
+def test2_3():
+    # TODO: This part fails because edge weight 10 dominates and having more edge 1 weights
+    # TODO: is better. Will probably need to fix these issues in the refining process...
+    print("test 2-2: center weights 2 outside weights 1 but added 10 edge")
+    print("Should be not center vertex")
+    G = nx.Graph()
+    G.add_nodes_from([0, 1, 2, 3, 4, 5, 6, 7, 8])
+    G.add_edge(0, 1, weight=2)
+    G.add_edge(0, 2, weight=2)
+    G.add_edge(0, 3, weight=2)
+    G.add_edge(0, 4, weight=2)
+    G.add_edge(0, 5, weight=2)
+    G.add_edge(0, 6, weight=2)
+    G.add_edge(1, 2, weight=1)
+    G.add_edge(2, 3, weight=1)
+    G.add_edge(3, 4, weight=1)
+    G.add_edge(4, 5, weight=1)
+    G.add_edge(5, 6, weight=1)
+    G.add_edge(6, 1, weight=1)
+    G.add_edge(6, 7, weight=1)
+    G.add_edge(7, 8, weight=10)
+    solve(G)
 
 
 def test3():
+    print("should be only center vertex")
     G = nx.Graph()
     G.add_nodes_from([0, 1, 2, 3, 4, 5, 6])
     G.add_edge(0, 1, weight=2)
@@ -241,6 +340,27 @@ def test4():
     solve(G)
 
 
+def test5():
+    print("Testing possible disconnect")
+    G = nx.Graph()
+    G.add_nodes_from([0, 1, 2, 3, 4, 5, 6, 7, 8])
+    G.add_edge(0, 1, weight=2)
+    G.add_edge(0, 2, weight=2)
+    G.add_edge(0, 3, weight=2)
+    G.add_edge(0, 4, weight=2)
+    G.add_edge(0, 5, weight=2)
+    G.add_edge(0, 6, weight=2)
+    G.add_edge(1, 2, weight=1)
+    G.add_edge(2, 3, weight=1)
+    G.add_edge(3, 4, weight=1)
+    G.add_edge(4, 5, weight=1)
+    G.add_edge(5, 6, weight=1)
+    G.add_edge(6, 1, weight=1)
+    G.add_edge(6, 7, weight=1)
+    G.add_edge(3, 8, weight=1)
+    solve(G)
+
+
 test()
 print()
 test2()
@@ -248,6 +368,27 @@ print()
 test3()
 print()
 test4()
+print()
+test5()
+
+#Messed up code:
+
+# def connectGraph():
+#     edges = list(G.edges)
+#     edges.sort(key=lambda x: weight(x))
+#     for e in edges:
+#         if connected():
+#             break;
+#         g1 = dj_set.find(e[0])
+#         g2 = dj_set.find(e[1])
+#         if g1 and g2:
+#             if dj_set.find(e[0]) != dj_set.find(e[1]):
+#                 visit(e[0], e)
+#     if connected():
+#         return
+#     optionals = [v for v in list(G.nodes) if optional[v]]
+
+
 
 
 # Here's an example of how to run your solver.

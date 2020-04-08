@@ -24,28 +24,31 @@ if __name__ == '__main__':
     with open(SOLVERS_FILENAME) as f:
         solvers = f.read().splitlines()
 
-    graphs = [read_input_file(path, MAX_SIZE) for path in listdir(INPUT_DIRECTORY)]
+    input_filenames = listdir(INPUT_DIRECTORY)
 
     # for each solver
-    for filename in solvers:
-        path = OUTPUT_DIRECTORY + '\\' + filename
+    for solver_filename in solvers:
+
         # get the solver from module name
-        mod = import_module(filename)
+        mod = import_module(solver_filename)
         solve = getattr(mod, 'solve')
 
         times = []
         # for each graph
-        for graph in graphs:
+        for input_filename in input_filenames:
+            input_path = INPUT_DIRECTORY + '\\' + input_filename
+            graph = read_input_file(input_path, MAX_SIZE)
             start = time()
             tree = solve(graph)
             end = time()
             times.append(end - start)
             # check if the output is valid
             if not is_valid_network(graph, tree):
-                print(filename, 'is invalid!')
+                print(solver_filename, 'is invalid!')
                 break
 
-            with open(path, 'w') as f:
-                write_output_file(tree, path)
+            output_path = OUTPUT_DIRECTORY + '\\' + input_filename + '\\' + solver_filename
+            with open(input_path, 'w') as f:
+                write_output_file(tree, f)
 
-        print(filename, 'completed in average time:', sum(times) / len(times))
+        print(solver_filename, 'completed in average time:', sum(times) / len(times))

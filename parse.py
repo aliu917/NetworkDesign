@@ -102,6 +102,24 @@ def read_output_file(path, G):
         return T
 
 
+def read_output_file_unsafe(path):
+    """
+    Parses and validates an input file without varifying the output
+
+    :param path: str, a path
+    :return: networkx Graph is the output is well formed, AssertionError thrown otherwise"""
+    with open(path, "r") as fo:
+        tokens = fo.readline()
+        nodes = set()
+        for token in tokens.split():
+            assert token.isdigit()
+            node = int(token)
+            assert 0 <= node < len(G)
+            nodes.add(node)
+        lines = fo.read().splitlines()
+        fo.close()
+
+
 def write_output_file(T, path):
     with open(path, "w") as fo:
         fo.write(" ".join(map(str, T.nodes)) + "\n")

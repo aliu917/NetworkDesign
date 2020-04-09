@@ -16,7 +16,7 @@ def is_valid_network(G, T):
     return nx.is_tree(T) and nx.is_dominating_set(G, T.nodes)
 
 
-def average_pairwise_distance(T):
+def average_pairwise_distance(T: nx.Graph):
     """
     Computes the average pairwise distance between vertices in T.
     This is what we want to minimize!
@@ -31,11 +31,15 @@ def average_pairwise_distance(T):
     Returns:
         double: the average pairwise distance
     """
-    path_lengths = nx.all_pairs_dijkstra_path_length(T)
-    total_pairwise_distance = (
-        sum([sum(length[1].values()) for length in path_lengths]) / 2
-    )
-    return total_pairwise_distance / (len(T) * (len(T) - 1))
+    if T.number_of_edges() == 0:
+        return 0
+    else:
+        return nx.average_shortest_path_length(T, 'weight')
+    # path_lengths = nx.all_pairs_dijkstra_path_length(T)
+    # total_pairwise_distance = (
+    #     sum([sum(length[1].values()) for length in path_lengths]) / 2
+    # )
+    # return total_pairwise_distance / (len(T) * (len(T) - 1))
 
 
 def average_pairwise_distance_fast(T):

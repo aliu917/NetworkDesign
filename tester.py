@@ -1,7 +1,7 @@
 """
 Computes the costs of all graphs in the specified directory (outputs\25), writing the results to a csv file
 
-Usage: python tester.py outputs/25 [results.csv]
+Usage: python tester.py outputs/25 [outputs/results.csv]
 """
 import csv
 import sys
@@ -14,23 +14,24 @@ from utils import average_pairwise_distance
 if __name__ == '__main__':
     assert len(sys.argv) <= 3
     OUTPUTS_DIRECTORY = sys.argv[1]
-    RESULTS_FILENAME = 'results.csv'
+    RESULTS_FILENAME = join('outputs', 'results.csv')
     if len(sys.argv) == 3:
         RESULTS_FILENAME = sys.argv[2]
 
     # initialize array holding all_costs
     directories = [f for f in listdir(OUTPUTS_DIRECTORY) if isdir(join(OUTPUTS_DIRECTORY, f))]
-    tem_dir = listdir(OUTPUTS_DIRECTORY + '\\' + directories[0])
+    tem_dir = listdir(join(OUTPUTS_DIRECTORY, directories[0]))
     all_costs = []
     for _ in tem_dir:
         all_costs.append([])
 
     # for each directory/graph
     for directory in directories:
-        outs = listdir(OUTPUTS_DIRECTORY + '\\' + directory)
-        # for each solver (on this graphg)
+        outs_dir = join(OUTPUTS_DIRECTORY, directory)
+        outs = listdir(outs_dir)
+        # for each solver (on this graph)
         for i in range(len(outs)):
-            tree = read_output_file_unsafe(OUTPUTS_DIRECTORY + '\\' + directory + '\\' + outs[i])
+            tree = read_output_file_unsafe(join(outs_dir, outs[i]))
             all_costs[i].append(average_pairwise_distance(tree))
 
     # add averages

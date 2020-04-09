@@ -104,7 +104,7 @@ def read_output_file(path, G):
 
 def read_output_file_unsafe(path):
     """
-    Parses and validates an input file without varifying the output
+    Parses and validates an input file without verifying the output
 
     :param path: str, a path
     :return: networkx Graph is the output is well formed, AssertionError thrown otherwise"""
@@ -114,10 +114,14 @@ def read_output_file_unsafe(path):
         for token in tokens.split():
             assert token.isdigit()
             node = int(token)
-            assert 0 <= node < len(G)
             nodes.add(node)
         lines = fo.read().splitlines()
         fo.close()
+
+        T = nx.parse_edgelist(lines, nodetype=int, data=(("weight", float),))
+        T.add_nodes_from(nodes)
+
+        return T
 
 
 def write_output_file(T, path):

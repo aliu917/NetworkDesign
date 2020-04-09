@@ -1,4 +1,5 @@
 from graph import Graph
+from graph import weight
 
 
 # Calculates the initial heuristic if there are no leaf/required elements for first step
@@ -8,7 +9,7 @@ def first_heuristic(g):
     for v in list(g.G.nodes):
         if len(list(g.neighbors(v))) == g.n - 1:  # Special case when one vertex is connected to all of them
             return v
-        minVEdge = g.minEdge([g.weight(e) for e in list(g.edges(v))])
+        minVEdge = g.minEdge([weight(g.G, e) for e in list(g.edges(v))])
         # h = sum([minEdge([weight(e, G) for e in list(G.edges(u)) if e[0] != v and e[1] != v]) for u in list(G.neighbors(v))]) / minVEdge
         h = sum([g.minEdgeWeight(u, v) * len(list(g.edges(u))) for u in list(g.neighbors(v))]) / minVEdge
         # h = sum([minEdge([weight(e, G) for e in list(G.edges(u))]) for u in list(G.neighbors(v))])
@@ -27,7 +28,7 @@ def calculate_heuristic(g, u, v):
             continue
         sum += g.minEdgeWeight(x, u) * len(list(g.edges(x)))
     # print(u, " to ", v, "h:", sum / (g.weight((u, v)) * g.nodes_left()))
-    return sum / (g.weight((u, v)) * g.nodes_left())
+    return sum / (weight(g.G, (u, v)) * g.nodes_left())
 
 
 # Original solve method

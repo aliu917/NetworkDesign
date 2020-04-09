@@ -9,6 +9,7 @@ import os
 import sys
 from importlib import import_module
 from time import time
+from graph import weight
 
 from parse import read_input_file, write_output_file
 from utils import is_valid_network, average_pairwise_distance
@@ -26,16 +27,16 @@ if __name__ == '__main__':
 
     input_filenames = os.listdir(INPUT_DIRECTORY)
 
-    # for each solver
-    for solver_filename in solvers:
+    # for each graph
+    for input_filename in input_filenames:
+        # for each solver
+        for solver_filename in solvers:
 
-        # get the solver from module name
-        mod = import_module(solver_filename)
-        solve = getattr(mod, 'solve')
+            # get the solver from module name
+            mod = import_module(solver_filename)
+            solve = getattr(mod, 'solve')
 
-        times = []
-        # for each graph
-        for input_filename in input_filenames:
+            times = []
             input_path = os.path.join(INPUT_DIRECTORY, input_filename)
             graph = read_input_file(input_path, MAX_SIZE)
             start = time()
@@ -47,11 +48,13 @@ if __name__ == '__main__':
                 print(solver_filename, 'is invalid!')
                 break
             print(solver_filename, 'Nodes: ', tree.nodes)
-            print(solver_filename, 'Edges: ', tree.edges)
+            for e in tree.edges:
+                print("edge:", e, "; weight:", weight(tree, e))
             print(solver_filename, 'Average cost: ', average_pairwise_distance(tree))
 
             out_file = os.path.join(OUTPUT_DIRECTORY, input_filename[:-3], solver_filename + '.out')
             os.makedirs(os.path.dirname(out_file), exist_ok=True)
             write_output_file(tree, out_file)
 
-        print(solver_filename, 'completed in average time:', sum(times) / len(times))
+            print(solver_filename, 'completed in average time:', sum(times) / len(times))
+            print()

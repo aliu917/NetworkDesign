@@ -7,6 +7,11 @@ import numpy as np
 from disjoint_set import DisjointSet
 
 
+# Gets the weight of specified edge
+def weight(G, e):
+    edge_dict = G.get_edge_data(e[0], e[1])
+    return edge_dict["weight"]
+
 class Graph:
 
     def __init__(self, G):
@@ -34,11 +39,6 @@ class Graph:
     def is_optional(self, x):
         return self.optional[x]
 
-    # Gets the weight of specified edge
-    def weight(self, e):
-        edge_dict = self.G.get_edge_data(e[0], e[1])
-        return edge_dict["weight"]
-
     # Finds the minimum edge in edges list or returns 0 if no elements in edges
     def minEdge(self, edges):
         if edges:
@@ -50,7 +50,7 @@ class Graph:
 
     # Finds the minimum edge weight of all of u's outoing edges except for the edge (u,v)
     def minEdgeWeight(self, u, v):
-        return Graph.minEdge(self, [self.weight(e) for e in list(self.edges(u)) if e[0] != v and e[1] != v])
+        return Graph.minEdge(self, [weight(self.G, e) for e in list(self.edges(u)) if e[0] != v and e[1] != v])
 
     # Heuristic helper to approximate number of nodes left to visit
     def nodes_left(self):
@@ -64,7 +64,7 @@ class Graph:
         self.dj_set.makeSet(v)
         self.T.add_node(v)
         if edge:
-            self.T.add_edge(edge[0], edge[1], weight=self.weight(edge))
+            self.T.add_edge(edge[0], edge[1], weight=weight(self.G, edge))
             self.dj_set.union(edge[0], edge[1])
         if optionals:
             for u in list(self.neighbors(v)):
@@ -110,7 +110,7 @@ class Graph:
         return True
 
     def default_heuristic(self, g, u, v):
-        return self.weight((u, v))
+        return weight(self.G, (u, v))
 
     # Initializes the pq with beginning elements
     def initialize_pq(self, q, h):

@@ -10,7 +10,7 @@ from utils import is_valid_network
 
 import sys
 from importlib import import_module
-from os import listdir
+import os
 from time import time
 
 if __name__ == '__main__':
@@ -24,7 +24,7 @@ if __name__ == '__main__':
     with open(SOLVERS_FILENAME, 'r') as f:
         solvers = f.read().splitlines()
 
-    input_filenames = listdir(INPUT_DIRECTORY)
+    input_filenames = os.listdir(INPUT_DIRECTORY)
 
     # for each solver
     for solver_filename in solvers:
@@ -36,7 +36,7 @@ if __name__ == '__main__':
         times = []
         # for each graph
         for input_filename in input_filenames:
-            input_path = INPUT_DIRECTORY + '\\' + input_filename
+            input_path = os.path.join(INPUT_DIRECTORY, input_filename)
             graph = read_input_file(input_path, MAX_SIZE)
             start = time()
             tree = solve(graph)
@@ -47,8 +47,8 @@ if __name__ == '__main__':
                 print(solver_filename, 'is invalid!')
                 break
 
-            output_path = OUTPUT_DIRECTORY + '\\' + input_filename + '\\' + solver_filename
-            with open(input_path, 'w') as f:
-                write_output_file(tree, f)
+            out_file = os.path.join(OUTPUT_DIRECTORY, input_filename[:-3], solver_filename + '.out')
+            os.makedirs(os.path.dirname(out_file), exist_ok=True)
+            write_output_file(tree, out_file)
 
         print(solver_filename, 'completed in average time:', sum(times) / len(times))

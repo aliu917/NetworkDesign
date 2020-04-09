@@ -1,13 +1,11 @@
 class DisjointSet:
 
     def __init__(self, n):
-        self.elements = n * [n+1]       #Intialize all parent pointers to out of range
+        self.elements = n * [n + 1]  # Intialize all parent pointers to out of range
         self.n = n
-
 
     def makeSet(self, n):
         self.elements[n] = -1
-
 
     def find(self, x):
         if self.elements[x] > self.n:
@@ -29,8 +27,7 @@ class DisjointSet:
             self.elements[y] -= 1
         self.elements[x] = y
 
-
-    #TODO: This is potentially very time consuming
+    # TODO: This is potentially very time consuming
     def get_all_sets(self):
         all_sets = {}
         for i in range(len(self.elements)):
@@ -44,7 +41,6 @@ class DisjointSet:
                 s.add(i)
                 all_sets[group] = s
         return all_sets
-
 
 # dj_set = DisjointSet(10)
 # for i in range(8):

@@ -5,13 +5,13 @@ writing the outputs to corresponding entries in specified directory (outputs\25)
 Usage: python runner.py inputs\25 outputs\25
 """
 
-from parse import read_input_file, write_output_file
-from utils import is_valid_network, average_pairwise_distance
-
+import os
 import sys
 from importlib import import_module
-import os
 from time import time
+
+from parse import read_input_file, write_output_file
+from utils import is_valid_network, average_pairwise_distance
 
 if __name__ == '__main__':
     assert len(sys.argv) == 3

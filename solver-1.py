@@ -1,13 +1,4 @@
-import networkx as nx
-from parse import read_input_file, write_output_file
-from utils import is_valid_network, average_pairwise_distance
-import sys
-
-from queue import PriorityQueue
-import numpy as np
-from disjoint_set import DisjointSet
 from graph import Graph
-from simple_tests import run_all_tests
 
 
 # Calculates the initial heuristic if there are no leaf/required elements for first step
@@ -15,7 +6,7 @@ def first_heuristic(g):
     maxH = 0
     maxV = -1
     for v in list(g.G.nodes):
-        if (len(list(g.neighbors(v))) == g.n - 1):  # Special case when one vertex is connected to all of them
+        if len(list(g.neighbors(v))) == g.n - 1:  # Special case when one vertex is connected to all of them
             return v
         minVEdge = g.minEdge([g.weight(e) for e in list(g.edges(v))])
         # h = sum([minEdge([weight(e, G) for e in list(G.edges(u)) if e[0] != v and e[1] != v]) for u in list(G.neighbors(v))]) / minVEdge
@@ -49,7 +40,6 @@ def solve(G):
         T: networkx.Graph
     """
 
-    # TODO: your code here!
     g = Graph(G)
     start = g.find_leaf_path()
     T = g.dijkstra_solve_graph(start, calculate_heuristic, first_heuristic)

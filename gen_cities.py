@@ -1,13 +1,16 @@
 import argparse
-import numpy as np
-from pathlib import Path
 import sys
 import time
+from pathlib import Path
+
+import numpy as np
+
 
 def all_connected(num_cities, edges):
     visited = np.array([False] * num_cities)
     dfs(0, edges, visited)
     return np.all(visited)
+
 
 def dfs(v, edges, visited):
     visited[v] = True
@@ -15,9 +18,10 @@ def dfs(v, edges, visited):
         if not visited[u]:
             dfs(u, edges, visited)
 
+
 def add_edges(edges):
     possible_num_edges = args.num_cities * (args.num_cities - 1) // 2
-    num_edges = int(np.random.random() * (possible_num_edges + 1)) # inclusive
+    num_edges = int(np.random.random() * (possible_num_edges + 1))  # inclusive
     for i in range(num_edges):
         a = np.random.choice(args.num_cities)
         b = np.random.choice(args.num_cities)
@@ -26,9 +30,10 @@ def add_edges(edges):
         if a != b and b not in edges[a]:
             edges[a].append(b)
 
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Gen cities.')
-    parser.add_argument('--num_cities',  type=int, required=True)
+    parser.add_argument('--num_cities', type=int, required=True)
     parser.add_argument('--map_size', type=int, default=100)
     args = parser.parse_args()
 
@@ -62,7 +67,7 @@ if __name__ == "__main__":
         add_edges(edges)
 
     # Make the folder
-    foldername = "./inputs/" + str(city_rank) + '/' 
+    foldername = "./inputs/" + str(city_rank) + '/'
     Path(foldername).mkdir(parents=True, exist_ok=True)
 
     # Store in a .in file

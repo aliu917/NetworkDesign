@@ -1,8 +1,10 @@
-from disjoint_set import DisjointSet
-import numpy as np
-import networkx as nx
-from queue import PriorityQueue
 import random
+from queue import PriorityQueue
+
+import networkx as nx
+import numpy as np
+
+from disjoint_set import DisjointSet
 
 
 class Graph:
@@ -71,12 +73,12 @@ class Graph:
 
     # Helper for finding all leaf paths -- Traverses each leaf path to trim off non-cycle elements
     def traverse_path(self, v, add_v, visited, prevV):
-        if (visited[v]):
+        if visited[v]:
             return
         visited[v] = True
         self.all_visited[v] = True
-        if (add_v):
-            if (prevV != -1):
+        if add_v:
+            if prevV != -1:
                 self.visit(v, (v, prevV), False)
             else:
                 self.visit(v, None, False)

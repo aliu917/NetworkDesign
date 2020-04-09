@@ -20,6 +20,10 @@ if __name__ == '__main__':
 
     # initialize array holding all_costs
     directories = [f for f in listdir(OUTPUTS_DIRECTORY) if isdir(join(OUTPUTS_DIRECTORY, f))]
+    if not directories:
+        print('no directories/graphs!')
+        sys.exit(1)
+
     tem_dir = listdir(join(OUTPUTS_DIRECTORY, directories[0]))
     all_costs = []
     for _ in tem_dir:
@@ -35,8 +39,13 @@ if __name__ == '__main__':
             all_costs[i].append(average_pairwise_distance(tree))
 
     # add averages
+
+    # noinspection PyUnboundLocalVariable
+    name_iter = iter(outs)
     for avg_costs in all_costs:
-        avg_costs.append(sum(avg_costs) / len(avg_costs))
+        average = sum(avg_costs) / len(avg_costs)
+        avg_costs.append(average)
+        print(next(name_iter), 'average cost:', average)
 
     # add headers
     graph_names = directories

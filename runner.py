@@ -21,7 +21,7 @@ if __name__ == '__main__':
 
     MAX_SIZE = 100
 
-    with open(SOLVERS_FILENAME) as f:
+    with open(SOLVERS_FILENAME, 'r') as f:
         solvers = f.read().splitlines()
 
     input_filenames = listdir(INPUT_DIRECTORY)

@@ -6,7 +6,7 @@ Usage: python runner.py inputs\25 outputs\25
 """
 
 from parse import read_input_file, write_output_file
-from utils import is_valid_network
+from utils import is_valid_network, average_pairwise_distance
 
 import sys
 from importlib import import_module
@@ -46,6 +46,9 @@ if __name__ == '__main__':
             if not is_valid_network(graph, tree):
                 print(solver_filename, 'is invalid!')
                 break
+            print(solver_filename, 'Nodes: ', tree.nodes)
+            print(solver_filename, 'Edges: ', tree.edges)
+            print(solver_filename, 'Average cost: ', average_pairwise_distance(tree))
 
             out_file = os.path.join(OUTPUT_DIRECTORY, input_filename[:-3], solver_filename + '.out')
             os.makedirs(os.path.dirname(out_file), exist_ok=True)

@@ -46,16 +46,16 @@ class DisjointSet:
         return all_sets
 
 
-dj_set = DisjointSet(10)
-for i in range(8):
-    dj_set.makeSet(i)
-dj_set.union(1, 4)
-dj_set.union(1, 5)
-dj_set.union(2, 3)
-dj_set.union(5, 3)
-
-for i in range(10):
-    print("Finding ", i, ": ", dj_set.find(i))
-
-print("all sets")
-print(dj_set.get_all_sets())
+# dj_set = DisjointSet(10)
+# for i in range(8):
+#     dj_set.makeSet(i)
+# dj_set.union(1, 4)
+# dj_set.union(1, 5)
+# dj_set.union(2, 3)
+# dj_set.union(5, 3)
+#
+# for i in range(10):
+#     print("Finding ", i, ": ", dj_set.find(i))
+#
+# print("all sets")
+# print(dj_set.get_all_sets())

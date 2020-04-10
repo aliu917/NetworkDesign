@@ -1,4 +1,4 @@
-from graph import Graph
+from graphsolver import GraphSolver
 
 
 # Original solve method
@@ -12,7 +12,7 @@ def solve(G):
     """
 
     # TODO: your code here!
-    g = Graph(G)
+    g = GraphSolver(G)
     T = g.dijkstra_solve_graph()
     return T
 

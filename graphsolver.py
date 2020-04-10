@@ -12,7 +12,8 @@ def weight(G, e):
     edge_dict = G.get_edge_data(e[0], e[1])
     return edge_dict["weight"]
 
-class Graph:
+
+class GraphSolver:
 
     def __init__(self, G):
         n = len(G.nodes)
@@ -50,7 +51,7 @@ class Graph:
 
     # Finds the minimum edge weight of all of u's outoing edges except for the edge (u,v)
     def minEdgeWeight(self, u, v):
-        return Graph.minEdge(self, [weight(self.G, e) for e in list(self.edges(u)) if e[0] != v and e[1] != v])
+        return GraphSolver.minEdge(self, [weight(self.G, e) for e in list(self.edges(u)) if e[0] != v and e[1] != v])
 
     # Heuristic helper to approximate number of nodes left to visit
     def nodes_left(self):

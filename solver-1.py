@@ -1,5 +1,5 @@
-from graph import Graph
-from graph import weight
+from graphsolver import GraphSolver
+from graphsolver import weight
 
 
 # Calculates the initial heuristic if there are no leaf/required elements for first step
@@ -41,7 +41,7 @@ def solve(G):
         T: networkx.Graph
     """
 
-    g = Graph(G)
+    g = GraphSolver(G)
     start = g.find_leaf_path()
     T = g.dijkstra_solve_graph(start, calculate_heuristic, first_heuristic)
     return T

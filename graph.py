@@ -4,7 +4,7 @@ from queue import PriorityQueue
 import networkx as nx
 import numpy as np
 
-from disjoint_set import DisjointSet
+from unused.disjoint_set import DisjointSet
 
 
 # Gets the weight of specified edge

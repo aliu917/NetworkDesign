@@ -1,5 +1,7 @@
 """
-Computes the costs of all graphs in the specified directory (outputs\25), writing the results to a csv file
+Computes the costs of all graphs in the specified directory (outputs\25), writing the results to a csv file.
+
+Currently doesn't calculate accurately, fix if running runner takes too much time.
 
 Usage: python tester.py outputs/25 [outputs/results.csv]
 """
@@ -37,8 +39,6 @@ if __name__ == '__main__':
         for i in range(len(outs)):
             tree = read_output_file_unsafe(join(outs_dir, outs[i]))
             all_costs[i].append(average_pairwise_distance(tree))
-
-    # add averages
 
     # noinspection PyUnboundLocalVariable
     name_iter = iter(outs)

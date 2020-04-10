@@ -31,20 +31,23 @@ if __name__ == '__main__':
     input_filenames = os.listdir(INPUT_DIRECTORY)
 
     all_costs = []
+    all_times = []
     for _ in solvers:
         all_costs.append([])
+        all_times.append([])
 
     # for each graph
     for input_filename in input_filenames:
         costs_iter = iter(all_costs)
+        times_iter = iter(all_times)
         # for each solver
         for solver_filename in solvers:
             costs = next(costs_iter)
+            times = next(times_iter)
             # get the solver from module name
             mod = import_module(solver_filename)
             solve = getattr(mod, 'solve')
 
-            times = []
             input_path = os.path.join(INPUT_DIRECTORY, input_filename)
             graph = read_input_file(input_path, MAX_SIZE)
             start = time()
@@ -56,9 +59,9 @@ if __name__ == '__main__':
                 print(solver_filename, 'is invalid!')
                 break
 
-            print(solver_filename, 'Nodes: ', tree.nodes)
-            for e in tree.edges:
-                print("edge:", e, "; weight:", weight(tree, e))
+            # print(solver_filename, 'Nodes: ', tree.nodes)
+            # for e in tree.edges:
+            #     print("edge:", e, "; weight:", weight(tree, e))
             cost = average_pairwise_distance(tree)
             print(solver_filename, 'Average cost: ', cost)
             costs.append(cost)
@@ -72,9 +75,16 @@ if __name__ == '__main__':
 
     name_iter = iter(solvers)
     for avg_costs in all_costs:
+        name = next(name_iter)
         average = sum(avg_costs) / len(avg_costs)
         avg_costs.append(average)
-        print(next(name_iter), 'average cost:', average)
+        print(name, 'average cost:', average)
+    print()
+    name_iter = iter(solvers)
+    for times in all_times:
+        name = next(name_iter)
+        average = sum(times) / len(times)
+        print(name, 'average time', average)
 
     # add headers
     graph_names = input_filenames
@@ -84,4 +94,3 @@ if __name__ == '__main__':
     with open(RESULTS_FILENAME, 'w', newline='\n') as f:
         writer = csv.writer(f)
         writer.writerows(all_costs)
-

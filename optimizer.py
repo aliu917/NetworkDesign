@@ -10,7 +10,10 @@ from networkx import Graph, find_cycle
 from utils import average_pairwise_distance
 
 
-def optimize(graph: Graph, tree: Graph, orig_cost: float):
+def optimize(graph: Graph, tree: Graph, orig_cost: float = None):
+    if orig_cost is None:
+        orig_cost = average_pairwise_distance(tree)
+
     # get all edges to consider
     edges = []
     for node in tree.nodes:
@@ -21,10 +24,11 @@ def optimize(graph: Graph, tree: Graph, orig_cost: float):
     # for each edge (consider order randomly)
     while edges:
         added_edge = random.choice(edges)
-        add_edge(tree, added_edge)
+        weight = graph[added_edge[0]][added_edge[1]]['weight']
 
         # if added edge creates a cycle
         if added_edge[1] in tree.nodes:
+            add_edge(tree, added_edge, weight)
             cycle: list = find_cycle(tree, added_edge[0])
             try:
                 cycle.remove(added_edge)
@@ -40,8 +44,7 @@ def optimize(graph: Graph, tree: Graph, orig_cost: float):
                 remove_edge(tree, added_edge)
         # if other vertex not in tree
         else:
-            tree.add_node(added_edge[1])
-            add_edge(tree, added_edge)
+            add_edge(tree, added_edge, weight)
 
             new_cost = average_pairwise_distance(tree)
 
@@ -79,5 +82,5 @@ def remove_edge(graph: Graph, edge: tuple):
     graph.remove_edge(edge[0], edge[1])
 
 
-def add_edge(graph: Graph, edge: tuple):
-    graph.add_edge(edge[0], edge[1], weight=graph[edge[0]][edge[1]]['weight'])
+def add_edge(graph: Graph, edge: tuple, weight: float):
+    graph.add_edge(edge[0], edge[1], weight=weight)

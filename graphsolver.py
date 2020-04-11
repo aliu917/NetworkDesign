@@ -29,7 +29,7 @@ class GraphSolver:
         return self.G.nodes
 
     def edges(self):
-        return self.G.nodes
+        return self.G.edges
 
     def is_required(self, x):
         return self.required[x]

@@ -45,7 +45,7 @@ def solve(G):
     g = GraphSolver(G)
     start = g.find_leaf_path()
     T = g.dijkstra_solve_graph(start, calculate_heuristic, first_heuristic)
-    optimize(G, T)
+    optimize(g, T)
     return T
 
 # run_all_tests(solve)

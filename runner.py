@@ -63,15 +63,15 @@ if __name__ == '__main__':
             # for e in tree.edges:
             #     print("edge:", e, "; weight:", weight(tree, e))
             cost = average_pairwise_distance(tree)
-            print(solver_filename, 'Average cost: ', cost)
+            # print(solver_filename, 'Average cost: ', cost)
             costs.append(cost)
 
             out_file = os.path.join(OUTPUT_DIRECTORY, input_filename[:-3], solver_filename + '.out')
             os.makedirs(os.path.dirname(out_file), exist_ok=True)
             write_output_file(tree, out_file)
 
-            print(solver_filename, 'completed in average time:', sum(times) / len(times))
-            print()
+            # print(solver_filename, 'completed in average time:', sum(times) / len(times))
+            # print()
 
     name_iter = iter(solvers)
     for avg_costs in all_costs:
@@ -79,7 +79,7 @@ if __name__ == '__main__':
         average = sum(avg_costs) / len(avg_costs)
         avg_costs.append(average)
         print(name, 'average cost:', average)
-    print()
+    # print()
     name_iter = iter(solvers)
     for times in all_times:
         name = next(name_iter)

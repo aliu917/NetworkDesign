@@ -15,7 +15,7 @@ def solve(G):
     # TODO: your code here!
     g = GraphSolver(G)
     T = g.dijkstra_solve_graph()
-    optimize(G, T)
+    optimize(g, T)
     return T
 
 # run_all_tests(solve)

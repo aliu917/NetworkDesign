@@ -164,6 +164,16 @@ def test5(f):
     G.add_edge(3, 8, weight=1)
     f(G)
 
+
+def test6(f):
+    print("Testing add vertex for better outcome")
+    G = nx.Graph()
+    G.add_nodes_from([0, 1, 2, 3])
+    G.add_edge(0, 1, weight=1)
+    G.add_edge(1, 2, weight=5)
+    G.add_edge(2, 3, weight=10)
+    f(G)
+
 def run_all_tests(f):
     test(f)
     print()

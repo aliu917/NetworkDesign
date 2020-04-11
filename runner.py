@@ -37,6 +37,7 @@ if __name__ == '__main__':
         all_times.append([])
 
     # for each graph
+    input_filenames.sort()
     for input_filename in input_filenames:
         costs_iter = iter(all_costs)
         times_iter = iter(all_times)

@@ -24,7 +24,7 @@ def first_heuristic(g):
 def calculate_heuristic(g, u, v):
     sum = 0
     for x in list(g.neighbors(u)):
-        if g.is_required(x) or g.is_optional(x):
+        if g.is_in_tree(x) or g.is_optional(x):
             continue
         sum += g.minEdgeWeight(x, u) * len(list(g.edges(x)))
     # print(u, " to ", v, "h:", sum / (g.weight((u, v)) * g.nodes_left()))

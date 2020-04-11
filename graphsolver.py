@@ -12,6 +12,12 @@ def weight(G, e):
     edge_dict = G.get_edge_data(e[0], e[1])
     return edge_dict["weight"]
 
+def is_leaf(G, v):
+    return len(list(G.neighbors(v))) == 1
+
+def edge_exists(G, e):
+    return e in G.edges or (e[1], e[0]) in G.edges
+
 
 class GraphSolver:
 
@@ -19,8 +25,8 @@ class GraphSolver:
         n = len(G.nodes)
         self.n = n
         self.G = G
-        self.required = n * [False]
-        self.optional = n * [False]
+        self.in_tree = n * [False]
+        self.optional = n * [0]
         self.all_visited = n * [False]
         self.dj_set = DisjointSet(n)
         self.T = nx.Graph()
@@ -28,17 +34,21 @@ class GraphSolver:
     def nodes(self):
         return self.G.nodes
 
-    def edges(self):
-        return self.G.edges
+    # Returns whether the vertex x is in the tree
+    def is_in_tree(self, x):
+        return self.in_tree[x]
 
-    def is_required(self, x):
-        return self.required[x]
-
+    # Gets all neighbors of v (NOTE: doesn't return a list, so must cast it as list(g.neighbors(v)))
     def neighbors(self, v):
         return self.G.neighbors(v)
 
+    # Determines whether x is already dominated (aka. we don't need to add it to the tree)
     def is_optional(self, x):
-        return self.optional[x]
+        return self.optional[x] > 0
+
+    # Dtermines whether x is an extra vertex (required) or one that can be removed and keep tree valid
+    def is_required(self, x):
+        return not all([self.optional[u] > 1 for u in list(self.neighbors(x)) if not self.in_tree[u]])
 
     # Finds the minimum edge in edges list or returns 0 if no elements in edges
     def minEdge(self, edges):
@@ -46,7 +56,10 @@ class GraphSolver:
             return min(edges)
         return 0
 
-    def edges(self, v):
+    #Gets all edges adjacent to v (if given) or all edges in the graph if not
+    def edges(self, v=-1):
+        if v < 0:
+            return self.G.edges
         return self.G.edges(v)
 
     # Finds the minimum edge weight of all of u's outoing edges except for the edge (u,v)
@@ -59,18 +72,57 @@ class GraphSolver:
 
     # Adds vertex v to T and assigns neighbors to optional visiting
     def visit(self, v, edge=None, optionals=True):
+        if (self.in_tree[v]):
+            print("Attempting to add vertex", v, "which is already present.")
+            return
         self.all_visited[v] = True
-        self.required[v] = True
-        self.optional[v] = False
-        self.dj_set.makeSet(v)
+        self.in_tree[v] = True
+        self.optional[v] = 0
         self.T.add_node(v)
         if edge:
             self.T.add_edge(edge[0], edge[1], weight=weight(self.G, edge))
-            self.dj_set.union(edge[0], edge[1])
-        if optionals:
-            for u in list(self.neighbors(v)):
-                if not self.required[u]:
-                    self.optional[u] = True
+            # self.dj_set.union(edge[0], edge[1])
+        for u in list(self.neighbors(v)):
+            if optionals:
+                if not self.in_tree[u]:
+                    self.optional[u] += 1
+
+    # Removes vertex v from T
+    def unvisit(self, v):
+        if (not self.in_tree[v]):
+            print("Attempting to remove vertex", v, "which is not in tree.")
+            return
+        self.T.remove_node(v)
+        self.all_visited[v] = False
+        self.in_tree[v] = False
+        self.optional[v] = 0
+        for u in list(self.neighbors(v)):
+            if (self.in_tree[u]):
+                self.optional[v] += 1
+            else:
+                self.optional[u] = max(0, self.optional[u - 1])
+
+    # Removes edge e from T
+    def remove_edge(self, e):
+        assert self.in_tree[e[0]] and self.in_tree[e[1]], "Cannot remove edge (" + str(e[0]) + ", " + str(e[1]) + ") not in tree"
+        if is_leaf(self.G, e[0]) and is_leaf(self.G, e[1]):
+            print("Cannot remove edge", e, "connecting two leaves")
+        if is_leaf(self.G, e[0]):
+            self.unvisit(e[0])
+        elif is_leaf(self.G, e[1]):
+            self.unvisit(e[1])
+        else:
+            self.T.remove_edge(e[0], e[1])
+
+    # Adds edge e to T
+    def add_edge(self, e):
+        assert self.in_tree[e[0]] or self.in_tree[e[1]], "Cannot add disconnected edge (" + str(e[0]) + ", " + str(e[1]) + ")"
+        if not self.in_tree[e[0]]:
+            self.visit(e[0], e)
+        elif not self.in_tree[e[1]]:
+            self.visit(e[1], e)
+        else:
+            self.T.add_edge(e[0], e[1], weight=weight(self.G, e))
 
     # Helper for finding all leaf paths -- Traverses each leaf path to trim off non-cycle elements
     def traverse_path(self, v, add_v, visited, prevV):
@@ -80,12 +132,10 @@ class GraphSolver:
         self.all_visited[v] = True
         if add_v:
             if prevV != -1:
-                self.visit(v, (v, prevV), False)
+                self.visit(v, (v, prevV))
             else:
-                self.visit(v, None, False)
+                self.visit(v, None)
             if len(list(self.neighbors(v))) > 2:
-                for u in list(self.neighbors(v)):
-                    self.optional[u] = True
                 return v
             else:
                 for adj in list(self.neighbors(v)):
@@ -104,19 +154,21 @@ class GraphSolver:
         #     traverse_path(leaf, False, visited, None)
         return self.traverse_path(leaves[0], False, visited, None)
 
+    #Determines whether v is surrounded or not
     def surrounded(self, v):
         for u in list(self.neighbors(v)):
-            if not self.required[u] and not self.optional[u]:
+            if not self.all_visited[u] and not self.optional[u]:
                 return False
         return True
 
+    # Default heuristic equivalent to mst
     def default_heuristic(self, g, u, v):
         return weight(self.G, (u, v))
 
     # Initializes the pq with beginning elements
     def initialize_pq(self, q, h):
-        for i in range(len(self.required)):
-            if self.required[i]:
+        for i in range(self.n):
+            if self.in_tree[i]:
                 for u in list(self.neighbors(i)):
                     if not self.all_visited[u]:
                         q.put((-h(self, u, i), (u, i)))
@@ -126,7 +178,8 @@ class GraphSolver:
         if not h:
             h = lambda g, u, v: self.default_heuristic(self, u, v)
         q = PriorityQueue()
-        if not any(self.required):
+        if not any(self.in_tree):
+            # random.seed(0)
             chosenV = random.randint(0, self.n - 1)
             if start_v:
                 chosenV = start_v
@@ -142,12 +195,12 @@ class GraphSolver:
             if self.all_visited[v] or self.surrounded(v):
                 continue
             self.visit(v, e)
-            # print(T.nodes)
+            # print(self.T.nodes)
             # print("Calculating heuristics after visiting", v)
             for u in list(self.neighbors(v)):
                 if not self.all_visited[u]:
                     q.put((-h(self, u, v), (u, v)))
-        # print(self.required)
+        # print(self.in_tree)
         # print(self.T.nodes)
         # print(self.T.edges)
         return self.T

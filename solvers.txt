@@ -1,4 +1,3 @@
 solver-1
 optimized_solver-1
 random-solver
-optimized_random-solver

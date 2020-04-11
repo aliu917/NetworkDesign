@@ -15,8 +15,8 @@ def weight(G, e):
 def is_leaf(G, v):
     return len(list(G.neighbors(v))) == 1
 
-def edge_exists(G, e):
-    return e in G.edges or (e[1], e[0]) in G.edges
+def edge_exists(lst, e):
+    return e in lst or (e[1], e[0]) in lst
 
 
 class GraphSolver:

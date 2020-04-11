@@ -29,6 +29,12 @@ def optimize(solver: GraphSolver, tree: Graph, orig_cost: float = None):
     optimize(solver, tree, new_cost)
 
 
+def add_neighbors(solver, edges, v):
+    for neighbor in solver.neighbors(v):
+        if not edge_exists(solver.T.edges, (v, neighbor)) and not edge_exists(edges, (v, neighbor)):
+            edges.append((v, neighbor))
+
+
 def optimize_additions(solver: GraphSolver, tree: Graph, orig_cost: float = None):
     graph = solver.G
     if orig_cost is None:
@@ -38,12 +44,14 @@ def optimize_additions(solver: GraphSolver, tree: Graph, orig_cost: float = None
     edges = []
     for node in tree.nodes:
         for neighbor in graph.neighbors(node):
-            if not edge_exists(tree, (node, neighbor)):
+            if not edge_exists(tree.edges, (node, neighbor)) and not edge_exists(edges, (node, neighbor)):
                 edges.append((node, neighbor))
 
     # for each edge (consider order randomly)
     while edges:
+        # random.seed(0)
         added_edge = random.choice(edges)
+        edges.remove(added_edge)
         weight = graph[added_edge[0]][added_edge[1]]['weight']
 
         # if added edge creates a cycle
@@ -59,7 +67,6 @@ def optimize_additions(solver: GraphSolver, tree: Graph, orig_cost: float = None
 
             if replaced_edge:
                 solver.remove_edge(replaced_edge)
-                return optimize_additions(solver, tree, new_cost)
             else:
                 solver.remove_edge(added_edge)
         # if other vertex not in tree
@@ -71,19 +78,18 @@ def optimize_additions(solver: GraphSolver, tree: Graph, orig_cost: float = None
             new_cost = average_pairwise_distance(tree)
 
             if new_cost < orig_cost:
-                return optimize_additions(solver, tree, new_cost)
+                add_neighbors(solver, edges, v)
             else:
                 solver.unvisit(v)
 
         # remove considered edge
-        edges.remove(added_edge)
     return orig_cost
 
 
 def optimize_removal(solver: GraphSolver, tree: Graph, orig_cost: float):
     candidates = [v for v in tree.nodes if not solver.is_required(v) and is_leaf(tree, v)]
     while candidates:
-        print(candidates)
+        # print(candidates)
         # random.seed(0)
         node = random.choice(candidates)
         candidates.remove(node)
@@ -92,7 +98,7 @@ def optimize_removal(solver: GraphSolver, tree: Graph, orig_cost: float):
         solver.unvisit(node)
         new_cost = average_pairwise_distance(tree)
         if new_cost < orig_cost:
-            print('removed', node)
+            # print('removed', node)
             return optimize_removal(solver, tree, new_cost)
         else:
             solver.add_edge(edge)

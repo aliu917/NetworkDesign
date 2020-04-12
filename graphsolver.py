@@ -30,6 +30,9 @@ class GraphSolver:
         self.all_visited = n * [False]
         self.dj_set = DisjointSet(n)
         self.T = nx.Graph()
+        self.T_cost = float('inf')
+        self.min_T_dict = {}
+        self.max_T_edge_weight = 101
 
     def nodes(self):
         return self.G.nodes
@@ -81,6 +84,7 @@ class GraphSolver:
         self.T.add_node(v)
         if edge:
             self.T.add_edge(edge[0], edge[1], weight=weight(self.G, edge))
+            self.max_T_edge_weight = max(self.max_T_edge_weight, weight(self.G, edge))
             # self.dj_set.union(edge[0], edge[1])
         for u in list(self.neighbors(v)):
             if optionals:
@@ -105,11 +109,11 @@ class GraphSolver:
     # Removes edge e from T
     def remove_edge(self, e):
         assert self.in_tree[e[0]] and self.in_tree[e[1]], "Cannot remove edge (" + str(e[0]) + ", " + str(e[1]) + ") not in tree"
-        if is_leaf(self.G, e[0]) and is_leaf(self.G, e[1]):
+        if is_leaf(self.T, e[0]) and is_leaf(self.T, e[1]):
             print("Cannot remove edge", e, "connecting two leaves")
-        if is_leaf(self.G, e[0]):
+        if is_leaf(self.T, e[0]):
             self.unvisit(e[0])
-        elif is_leaf(self.G, e[1]):
+        elif is_leaf(self.T, e[1]):
             self.unvisit(e[1])
         else:
             self.T.remove_edge(e[0], e[1])
@@ -123,6 +127,7 @@ class GraphSolver:
             self.visit(e[1], e)
         else:
             self.T.add_edge(e[0], e[1], weight=weight(self.G, e))
+            self.max_T_edge_weight = max(self.max_T_edge_weight, weight(self.G, e))
 
     # Helper for finding all leaf paths -- Traverses each leaf path to trim off non-cycle elements
     def traverse_path(self, v, add_v, visited, prevV):

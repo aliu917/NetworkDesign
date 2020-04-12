@@ -66,6 +66,7 @@ def optimize_additions(solver: GraphSolver, tree: Graph, orig_cost: float = None
             replaced_edge, new_cost = kill_cycle(solver, cycle, orig_cost)
 
             if replaced_edge:
+                orig_cost = new_cost
                 solver.remove_edge(replaced_edge)
             else:
                 solver.remove_edge(added_edge)
@@ -78,6 +79,7 @@ def optimize_additions(solver: GraphSolver, tree: Graph, orig_cost: float = None
             new_cost = average_pairwise_distance(tree)
 
             if new_cost < orig_cost:
+                orig_cost = new_cost
                 add_neighbors(solver, edges, v)
             else:
                 solver.unvisit(v)
@@ -98,7 +100,7 @@ def optimize_removal(solver: GraphSolver, tree: Graph, orig_cost: float):
         solver.unvisit(node)
         new_cost = average_pairwise_distance(tree)
         if new_cost < orig_cost:
-            # print('removed', node)
+            print('removed', node)
             return optimize_removal(solver, tree, new_cost)
         else:
             solver.add_edge(edge)

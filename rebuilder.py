@@ -9,7 +9,7 @@ import random
 
 
 class Rebuilder:
-    ATTEMPT_LIMIT = 100  # the number of attempts to make before we consider a local minimum to be found
+    ATTEMPT_LIMIT = 5  # the number of attempts to make before we consider a local minimum to be found
     RESET_ETA = .5  # learning rate when local min is found
     MIN_REMOVAL = 3  # minimum number of nodes to remove
     A = .08  # values of a in eta calculation: x/(x+a); larger A mean sharper incline
@@ -37,6 +37,8 @@ class Rebuilder:
         n = self.solver.T.number_of_nodes()
         if self.attempts >= self.ATTEMPT_LIMIT:
             r = self.RESET_ETA * n
+            self.attempts = 0
+            return True
         else:
             r = min(self.MIN_REMOVAL, n * self.calc_eta())
 
@@ -46,12 +48,14 @@ class Rebuilder:
 
         self.local_min = min(self.local_min, self.cost)
 
+        return self.attempts >= self.ATTEMPT_LIMIT
+
     def calc_eta(self):
         """
         Calculates eta (proportion of nodes to remove) based on diff.
         :return: eta in [0,1)
         """
-        diff = abs(self.local_min - self.cost) / self.local_min
+        diff = abs(self.local_min - self.cost) / (self.local_min + .1)
         return diff / (diff + self.A)
 
     def BFS(self, tree: Graph, num_nodes):
@@ -63,6 +67,8 @@ class Rebuilder:
         """
 
         leaves = [v for v in tree.nodes if tree.neighbors(v) == 1]
+        if not leaves:
+            return []
         num_visited = 0
         q = [random.choice(leaves)]
         nodes = []

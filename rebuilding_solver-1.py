@@ -2,7 +2,9 @@ from graphsolver import GraphSolver
 from graphsolver import weight
 
 # Calculates the initial heuristic if there are no leaf/required elements for first step
+from optimizer_sorted import optimize_sorted
 from rebuilder import Rebuilder
+from utils import average_pairwise_distance
 
 
 def first_heuristic(g):
@@ -46,11 +48,28 @@ def solve(G):
     g = GraphSolver(G)
     start = g.find_leaf_path()
     T = g.dijkstra_solve_graph(start, calculate_heuristic, first_heuristic)
+    optimize_sorted(g, T)
     rebuilder = Rebuilder(g)
-    for _ in range(200):
-        rebuilder.rebuild()
+    min_T = T.copy()
+    min_cost = average_pairwise_distance(T)
+    print('*', min_cost)
+    for _ in range(50):
+        if rebuilder.rebuild():
+            g = GraphSolver(G)
+            for v in min_T.nodes:
+                g.visit(v)
+            for e in min_T.edges:
+                g.add_edge(e)
+            print('reset')
         g.dijkstra_solve_graph(start, calculate_heuristic, first_heuristic)
-    return T
+        optimize_sorted(g, g.T)
+
+        cost = average_pairwise_distance(g.T)
+        print(cost)
+        if cost < min_cost:
+            min_cost = cost
+            min_T = g.T.copy()
+    return min_T
 
 # run_all_tests(solve)
 

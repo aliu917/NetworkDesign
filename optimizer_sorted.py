@@ -57,9 +57,9 @@ def optimize_cycle_remover(solver, tree, orig_cost):
             replaced_edge, new_cost = kill_cycle(solver, cycle, min_cost)
             if replaced_edge:
                 added_edge = True
-                print("Added vertex", v, "and edges:", min_edge, edges[j])
-                print("Prev cost:", min_cost)
-                print("New cost:", new_cost)
+                # print("Added vertex", v, "and edges:", min_edge, edges[j])
+                # print("Prev cost:", min_cost)
+                # print("New cost:", new_cost)
                 min_cost = new_cost
                 solver.remove_edge(replaced_edge)
             else:
@@ -156,7 +156,7 @@ def optimize_removal_sorted(solver: GraphSolver, tree: Graph, orig_cost: float):
         solver.unvisit(node)
         new_cost = average_pairwise_distance(tree)
         if new_cost < orig_cost:
-            print('removed', node)
+            # print('removed', node)
             return optimize_removal_sorted(solver, tree, new_cost)
         else:
             solver.add_edge(edge)

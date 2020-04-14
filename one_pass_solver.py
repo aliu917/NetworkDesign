@@ -1,6 +1,6 @@
 from graphsolver import GraphSolver
 from graphsolver import weight
-from optimizer_sorted import optimize_sorted, kill_cycle
+from optimizer_sorted import optimize_sorted
 from simple_tests import test6
 
 
@@ -46,7 +46,7 @@ def solve(G):
     g = GraphSolver(G)
     start = g.find_leaf_path()
     T = g.dijkstra_solve_graph(start, calculate_heuristic, first_heuristic)
-    optimize_sorted(g, T, cycle_killer_fn=kill_cycle)
+    optimize_sorted(g, T)
     return T
 
 # test6(solve)

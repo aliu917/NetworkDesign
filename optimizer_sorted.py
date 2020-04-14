@@ -5,17 +5,18 @@ until no immediate changes lead to improvements.
 """
 import random
 
-from networkx import Graph, find_cycle
+from networkx import Graph, find_cycle, all_pairs_dijkstra
 
 from graphsolver import GraphSolver
 from utils import average_pairwise_distance
 from graphsolver import edge_exists, weight
+from numpy import argmin
 
-def optimize_sorted(solver: GraphSolver, tree: Graph, orig_cost: float = None):
+def optimize_sorted(solver: GraphSolver, tree: Graph, cycle_killer_fn, orig_cost: float = None):
     # noinspection PyUnusedLocal
     no_add = no_remove = no_cycle = False
 
-    new_cost = optimize_cycle_remover(solver, tree, orig_cost)
+    new_cost = optimize_cycle_remover(solver, tree, cycle_killer_fn, orig_cost)
     no_cycle = new_cost == orig_cost
     orig_cost = new_cost
 
@@ -29,10 +30,10 @@ def optimize_sorted(solver: GraphSolver, tree: Graph, orig_cost: float = None):
     if no_add and no_remove and no_cycle:
         return
 
-    optimize_sorted(solver, tree, new_cost)
+    optimize_sorted(solver, tree, cycle_killer_fn, orig_cost=new_cost)
 
 
-def optimize_cycle_remover(solver, tree, orig_cost):
+def optimize_cycle_remover(solver, tree, cycle_killer_fn, orig_cost):
     if not orig_cost:
         orig_cost = average_pairwise_distance(tree)
     tree_set = set(tree.nodes)
@@ -54,7 +55,7 @@ def optimize_cycle_remover(solver, tree, orig_cost):
             solver.add_edge(edges[j])
 
             cycle: list = find_cycle(tree, v)
-            replaced_edge, new_cost = kill_cycle(solver, cycle, min_cost)
+            replaced_edge, new_cost = cycle_killer_fn(solver, cycle, orig_cost=min_cost)
             if replaced_edge:
                 added_edge = True
                 # print("Added vertex", v, "and edges:", min_edge, edges[j])
@@ -174,6 +175,7 @@ def kill_cycle(solver: GraphSolver, cycle: list, orig_cost: float):
     :return:
     """
     tree = solver.T
+
     cycle.sort(key= lambda x: weight(solver.T, x), reverse = True)
     edge = cycle[0]
     solver.remove_edge(edge)
@@ -181,6 +183,50 @@ def kill_cycle(solver: GraphSolver, cycle: list, orig_cost: float):
     solver.add_edge(edge)
     if new_cost < orig_cost:
         return edge, new_cost
+    # else:
+    #     print('removing', edge, 'from cycle', cycle, "didn't decrease cost because", new_cost, '>=', orig_cost)
+    #     print(weight(solver.T, edge), 'from', [weight(solver.T, e) for e in cycle])
+    return None, orig_cost
+
+def kill_cycle_all_paths(solver: GraphSolver, cycle: list, orig_cost: float):
+    """
+    Returns the first edge found in the cycle which, if removed from tree, leads to a decrease in cost (average pairwise
+    distance).
+    :param tree: tree (with 1 extra edge) to consider
+    :param cycle: list of edges to consider (which form a cycle, removal of any restores tree)
+    :param orig_cost: original cost
+    :return:
+    """
+    tree = solver.T
+
+    weights = [0] * len(cycle)
+
+    # Count the number of times each edge in the cycle appears in the paths
+    for n, (dist, path) in all_pairs_dijkstra(solver.G):
+        for target in path.keys():
+            for v in range(1, len(path[target])):
+                path_edge = (path[target][v-1], path[target][v])
+                if path_edge in cycle:
+                    weights[cycle.index(path_edge)] += 1
+
+    # Multiply by the edge weight to get the contributing weight
+    weights = [weights[i] * weight(solver.G, cycle[i]) for i in range(len(weights))]
+
+
+    edge = cycle[argmin(weights)]
+    print('weights for', cycle, 'are', weights)
+    # cycle.sort(key= lambda x: weight(solver.T, x), reverse = True)
+    # edge = cycle[0]
+    solver.remove_edge(edge)
+    new_cost = average_pairwise_distance(tree)
+    solver.add_edge(edge)
+    if new_cost < orig_cost:
+        print('nice')
+        return edge, new_cost
+    else:
+        # print('removing', edge, 'from cycle', cycle, "didn't decrease cost because", new_cost, '>=', orig_cost)
+        # print(weight(solver.T, edge), 'from', [weight(solver.T, e) for e in cycle])
+        pass
     return None, orig_cost
 
 

@@ -5,10 +5,10 @@ until no immediate changes lead to improvements.
 """
 import random
 
-from networkx import Graph, find_cycle, all_pairs_dijkstra
+from networkx import Graph, find_cycle, closeness_centrality, all_pairs_dijkstra
 
 from graphsolver import GraphSolver
-from utils import average_pairwise_distance
+from utils import average_pairwise_distance, is_valid_network
 from graphsolver import edge_exists, weight
 from numpy import argmin
 
@@ -111,21 +111,26 @@ def optimize_additions_sorted(solver: GraphSolver, tree: Graph, orig_cost: float
         # if added edge creates a cycle
         if added_edge[1] in tree.nodes:
             solver.add_edge(added_edge)
-            cycle: list = find_cycle(tree, added_edge[0])
-            try:
-                cycle.remove(added_edge)
-            except ValueError:
-                cycle.remove(added_edge[::-1])
+            while(True):
+                try:
+                    cycle: list = find_cycle(tree, added_edge[0])
+                except:     #No cycle
+                    break
 
-            replaced_edge, new_cost = kill_cycle(solver, cycle, orig_cost)
-            # print("replaced_edge:", replaced_edge)
-            # print("cost:", new_cost)
+                try:
+                    cycle.remove(added_edge)
+                except ValueError:
+                    cycle.remove(added_edge[::-1])
 
-            if replaced_edge:
-                orig_cost = new_cost
-                solver.remove_edge(replaced_edge)
-            else:
-                solver.remove_edge(added_edge)
+                replaced_edge, new_cost = kill_cycle(solver, cycle, orig_cost)
+                # print("replaced_edge:", replaced_edge)
+                # print("cost:", new_cost)
+
+                if replaced_edge:
+                    orig_cost = new_cost
+                    solver.remove_edge(replaced_edge)
+                else:
+                    solver.remove_edge(added_edge)
         # if other vertex not in tree
         else:
             v = added_edge[1]
@@ -150,8 +155,8 @@ def optimize_removal_sorted(solver: GraphSolver, tree: Graph, orig_cost: float):
     while candidates:
         # print(candidates)
         # random.seed(0)
-        node = random.choice(candidates)
-        candidates.remove(node)
+        candidates.sort(key=lambda x: closeness_centrality(solver.T, x))
+        node = candidates.pop(0)
         edge = (node, list(tree.neighbors(node))[0])
 
         solver.unvisit(node)
@@ -175,18 +180,17 @@ def kill_cycle(solver: GraphSolver, cycle: list, orig_cost: float):
     :return:
     """
     tree = solver.T
+    min_edge = None
+    for edge in cycle:
+        solver.remove_edge(edge)
+        new_cost = average_pairwise_distance(tree)
+        still_valid = is_valid_network(solver.G, solver.T)
+        solver.add_edge(edge)
+        if new_cost < orig_cost and still_valid:
+            min_edge = edge
+            orig_cost = new_cost
 
-    cycle.sort(key= lambda x: weight(solver.T, x), reverse = True)
-    edge = cycle[0]
-    solver.remove_edge(edge)
-    new_cost = average_pairwise_distance(tree)
-    solver.add_edge(edge)
-    if new_cost < orig_cost:
-        return edge, new_cost
-    # else:
-    #     print('removing', edge, 'from cycle', cycle, "didn't decrease cost because", new_cost, '>=', orig_cost)
-    #     print(weight(solver.T, edge), 'from', [weight(solver.T, e) for e in cycle])
-    return None, orig_cost
+    return min_edge, orig_cost
 
 def kill_cycle_all_paths(solver: GraphSolver, cycle: list, orig_cost: float):
     """

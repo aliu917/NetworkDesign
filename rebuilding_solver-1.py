@@ -52,7 +52,7 @@ def solve(G):
     rebuilder = Rebuilder(g)
     min_T = T.copy()
     min_cost = average_pairwise_distance(T)
-    print('*', min_cost)
+    # print('*', min_cost)
     for _ in range(50):
         if rebuilder.rebuild():
             g = GraphSolver(G)
@@ -60,12 +60,12 @@ def solve(G):
                 g.visit(v)
             for e in min_T.edges:
                 g.add_edge(e)
-            print('reset')
+            # print('reset')
         g.dijkstra_solve_graph(start, calculate_heuristic, first_heuristic)
         optimize_sorted(g, g.T)
 
         cost = average_pairwise_distance(g.T)
-        print(cost)
+        # print(cost)
         if cost < min_cost:
             min_cost = cost
             min_T = g.T.copy()

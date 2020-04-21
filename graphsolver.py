@@ -104,7 +104,7 @@ class GraphSolver:
             if (self.in_tree[u]):
                 self.optional[v] += 1
             else:
-                self.optional[u] = max(0, self.optional[u - 1])
+                self.optional[u] = max(0, self.optional[u] - 1)
 
     # Removes edge e from T
     def remove_edge(self, e):
@@ -192,7 +192,7 @@ class GraphSolver:
                 chosenV = first_h(self)
             self.visit(chosenV)
         self.initialize_pq(q, h)
-        while q:
+        while not q.empty():
             e = q.get()[1]
             v = e[0]
             if np.count_nonzero([sum(x) for x in zip(self.optional, self.all_visited)]) == self.n:

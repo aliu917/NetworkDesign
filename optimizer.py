@@ -8,7 +8,7 @@ import random
 from networkx import Graph, find_cycle
 
 from graphsolver import GraphSolver
-from utils import average_pairwise_distance
+from utils import average_pairwise_distance, is_valid_network
 from graphsolver import edge_exists
 
 
@@ -57,19 +57,26 @@ def optimize_additions(solver: GraphSolver, tree: Graph, orig_cost: float = None
         # if added edge creates a cycle
         if added_edge[1] in tree.nodes:
             solver.add_edge(added_edge)
-            cycle: list = find_cycle(tree, added_edge[0])
-            try:
-                cycle.remove(added_edge)
-            except ValueError:
-                cycle.remove(added_edge[::-1])
+            while (True):
+                try:
+                    cycle: list = find_cycle(tree, added_edge[0])
+                except:  # No cycle
+                    break
 
-            replaced_edge, new_cost = kill_cycle(solver, cycle, orig_cost)
+                try:
+                    cycle.remove(added_edge)
+                except ValueError:
+                    cycle.remove(added_edge[::-1])
 
-            if replaced_edge:
-                orig_cost = new_cost
-                solver.remove_edge(replaced_edge)
-            else:
-                solver.remove_edge(added_edge)
+                replaced_edge, new_cost = kill_cycle(solver, cycle, orig_cost)
+                # print("replaced_edge:", replaced_edge)
+                # print("cost:", new_cost)
+
+                if replaced_edge:
+                    orig_cost = new_cost
+                    solver.remove_edge(replaced_edge)
+                else:
+                    solver.remove_edge(added_edge)
         # if other vertex not in tree
         else:
             v = added_edge[1]
@@ -100,7 +107,7 @@ def optimize_removal(solver: GraphSolver, tree: Graph, orig_cost: float):
         solver.unvisit(node)
         new_cost = average_pairwise_distance(tree)
         if new_cost < orig_cost:
-            print('removed', node)
+            # print('removed', node)
             return optimize_removal(solver, tree, new_cost)
         else:
             solver.add_edge(edge)
@@ -121,8 +128,9 @@ def kill_cycle(solver: GraphSolver, cycle: list, orig_cost: float):
     for edge in cycle:
         solver.remove_edge(edge)
         new_cost = average_pairwise_distance(tree)
+        still_valid = is_valid_network(solver.G, solver.T)
         solver.add_edge(edge)
-        if new_cost < orig_cost:
+        if new_cost < orig_cost and still_valid:
             return edge, new_cost
 
     return None, orig_cost

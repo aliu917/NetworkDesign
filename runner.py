@@ -38,9 +38,11 @@ if __name__ == '__main__':
 
     # for each graph
     input_filenames.sort()
+    # for input_filename in ["medium-258.in"]:
     for input_filename in input_filenames:
         costs_iter = iter(all_costs)
         times_iter = iter(all_times)
+        print("File name:", input_filename)
         # for each solver
         for solver_filename in solvers:
             costs = next(costs_iter)
@@ -62,21 +64,24 @@ if __name__ == '__main__':
 
             # print(solver_filename, 'Nodes: ', tree.nodes)
             # for e in tree.edges:
-                # print("edge:", e, "; weight:", weight(tree, e))
+            #     print("edge:", e, "; weight:", weight(tree, e))
             cost = average_pairwise_distance(tree)
-            # print(solver_filename, 'Average cost: ', cost)
+            print(solver_filename, 'Average cost: ', cost)
             costs.append(cost)
 
             out_file = os.path.join(OUTPUT_DIRECTORY, input_filename[:-3], solver_filename + '.out')
             os.makedirs(os.path.dirname(out_file), exist_ok=True)
             write_output_file(tree, out_file)
 
-            # print(solver_filename, 'completed in average time:', sum(times) / len(times))
-        # print()
+            print(solver_filename, 'completed in average time:', sum(times) / len(times))
+        print()
 
     name_iter = iter(solvers)
     for avg_costs in all_costs:
         name = next(name_iter)
+        if len(avg_costs) == 0:
+            print("Errored somewhere")
+            break
         average = sum(avg_costs) / len(avg_costs)
         avg_costs.append(average)
         print(name, 'average cost:', average)

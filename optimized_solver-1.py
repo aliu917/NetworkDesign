@@ -1,6 +1,7 @@
 from graphsolver import GraphSolver
 from graphsolver import weight
 from optimizer import optimize
+from utils import average_pairwise_distance
 from simple_tests import test6
 
 
@@ -46,6 +47,8 @@ def solve(G):
     g = GraphSolver(G)
     start = g.find_leaf_path()
     T = g.dijkstra_solve_graph(start, calculate_heuristic, first_heuristic)
+    if average_pairwise_distance(T) == 0:
+        return T
     optimize(g, T)
     return T
 

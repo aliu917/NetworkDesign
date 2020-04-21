@@ -80,4 +80,5 @@ if __name__ == "__main__":
     print('Green = node/edge of a neighbor of nodes in solution graph')
     print('Red = node/edge in the input graph but not in the solution graph')
 
+    plt.title(args.output)
     plt.show()

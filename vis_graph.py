@@ -61,7 +61,7 @@ if __name__ == "__main__":
     # overlap_v, overlap_edges, diff_v, diff_edges, neighbor_v, neighbor_edges = \
     #     list(overlap)
 
-    pos = nx.spring_layout(G_in)  # positions for all nodes
+    pos = nx.spring_layout(G_in, seed=1)  # positions for all nodes
 
     nx.draw_networkx_nodes(G_in, pos, nodelist=diff_v, node_color='g', alpha=0.8)
     nx.draw_networkx_nodes(G_in, pos, nodelist=neighbor_v, node_color='g', alpha=0.8)

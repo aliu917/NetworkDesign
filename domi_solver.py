@@ -60,7 +60,10 @@ def base_weight(node, graph: Graph):
     :param graph: parent graph
     :return: node weight
     """
-    return sum([graph[node][neighbor]['weight'] for neighbor in graph.neighbors(node)]) / graph.degree[node]
+    if graph.degree[node]:
+        return sum([graph[node][neighbor]['weight'] for neighbor in graph.neighbors(node)]) / graph.degree[node]
+    else:  # to avoid divide by zero (no neighbors) error, occurs with singleton graphs
+        return 1
     # TODO: implement
 
 
@@ -131,11 +134,14 @@ def shortest_paths(graph: Graph):
     for path in paths.values():
         prev = None
         for node in path:
-            if prev:
+            if prev is not None:
                 edges.add((prev, node))
             prev = node
     new = Graph()
-    new.add_edges_from(edges)
+    if edges:
+        new.add_edges_from(edges)
+    else:
+        new.add_node(center)
     return new
 
 

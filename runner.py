@@ -11,12 +11,14 @@ from importlib import import_module
 from os import listdir
 from os.path import join
 from time import time
+import networkx as nx
 
 from graphsolver import weight
 from parse import read_input_file, write_output_file
 from utils import is_valid_network, average_pairwise_distance
 
-if __name__ == '__main__':
+
+def main():
     assert len(sys.argv) == 3
     SOLVERS_FILENAME = 'solvers.txt'
     INPUT_DIRECTORY = sys.argv[1]
@@ -51,6 +53,9 @@ if __name__ == '__main__':
             mod = import_module(solver_filename)
             solve = getattr(mod, 'solve')
 
+            if input_filename == 'small-254.in':
+                pass  # breakpoint for debugging
+
             input_path = os.path.join(INPUT_DIRECTORY, input_filename)
             graph = read_input_file(input_path, MAX_SIZE)
             start = time()
@@ -59,8 +64,9 @@ if __name__ == '__main__':
             times.append(end - start)
 
             if not is_valid_network(graph, tree):
-                # print(solver_filename, 'is invalid!')
-                break
+                print(solver_filename, 'is invalid!')
+                nx.draw(graph)
+                return
 
             # print(solver_filename, 'Nodes: ', tree.nodes)
             # for e in tree.edges:
@@ -100,3 +106,7 @@ if __name__ == '__main__':
     with open(RESULTS_FILENAME, 'w', newline='\n') as f:
         writer = csv.writer(f)
         writer.writerows(all_costs)
+
+
+if __name__ == '__main__':
+    main()

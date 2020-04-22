@@ -218,14 +218,14 @@ def kill_cycle_all_paths(solver: GraphSolver, cycle: list, orig_cost: float):
 
 
     edge = cycle[argmin(weights)]
-    print('weights for', cycle, 'are', weights)
+    # print('weights for', cycle, 'are', weights)
     # cycle.sort(key= lambda x: weight(solver.T, x), reverse = True)
     # edge = cycle[0]
     solver.remove_edge(edge)
     new_cost = average_pairwise_distance(tree)
     solver.add_edge(edge)
     if new_cost < orig_cost:
-        print('nice')
+        # print('nice')
         return edge, new_cost
     else:
         # print('removing', edge, 'from cycle', cycle, "didn't decrease cost because", new_cost, '>=', orig_cost)

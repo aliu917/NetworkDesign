@@ -40,7 +40,7 @@ def main():
 
     # for each graph
     input_filenames.sort()
-    # for input_filename in ["medium-258.in"]:
+    # for input_filename in ["small-119.in"]:
     for input_filename in input_filenames:
         costs_iter = iter(all_costs)
         times_iter = iter(all_times)
@@ -70,7 +70,7 @@ def main():
 
             # print(solver_filename, 'Nodes: ', tree.nodes)
             # for e in tree.edges:
-            #     print("edge:", e, "; weight:", weight(tree, e))
+            #     print("edge:", e, "; weight:", weight(graph, e))
             cost = average_pairwise_distance(tree)
             print(solver_filename, 'Average cost: ', cost)
             costs.append(cost)

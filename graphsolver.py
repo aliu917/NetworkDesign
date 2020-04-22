@@ -5,6 +5,7 @@ import networkx as nx
 import numpy as np
 
 from unused.disjoint_set import DisjointSet
+from utils import average_pairwise_distance
 
 
 # Gets the weight of specified edge
@@ -33,9 +34,13 @@ class GraphSolver:
         self.T_cost = float('inf')
         self.min_T_dict = {}
         self.max_T_edge_weight = 101
+        self.centralities = nx.closeness_centrality(G);
 
     def nodes(self):
         return self.G.nodes
+
+    def node_centrality(self, v):
+        return self.centralities[v]
 
     # Returns whether the vertex x is in the tree
     def is_in_tree(self, x):

@@ -1,1 +1,4 @@
-domi_solver
+optimized_solver_1
+optimized_solver_1_sorted
+opt_sorted_h1
+combined_solver

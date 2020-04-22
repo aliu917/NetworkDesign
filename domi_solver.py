@@ -1,6 +1,7 @@
 from networkx import Graph
 import networkx as nx
 from networkx.algorithms import approximation as ap
+from utils import is_valid_network
 
 
 def solve(G):
@@ -11,7 +12,16 @@ def solve(G):
     Returns:
         T: networkx.Graph
     """
+    H = G.copy()
+    for v in list(G.nodes):
+        if len(list(G.neighbors(v))) == len(G.nodes) - 1:
+            t = nx.Graph()
+            t.add_node(v)
+            return t
     t = find_dom_tree(G)
+    check = is_valid_network(H, t)
+    if not check:
+        raise Exception('invalid')
     return t
 
 

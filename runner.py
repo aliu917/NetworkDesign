@@ -17,8 +17,11 @@ from graphsolver import weight
 from parse import read_input_file, write_output_file
 from utils import is_valid_network, average_pairwise_distance
 
+saved_costs = [0] * 8
+
 
 def main():
+    global saved_costs
     assert len(sys.argv) == 3
     SOLVERS_FILENAME = 'solvers.txt'
     INPUT_DIRECTORY = sys.argv[1]
@@ -97,6 +100,7 @@ def main():
         name = next(name_iter)
         average = sum(times) / len(times)
         print(name, 'average time', average)
+    print("Saved costs:", saved_costs)
 
     # add headers
     graph_names = input_filenames

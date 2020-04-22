@@ -1,4 +1,2 @@
-optimized_solver_1
-optimized_solver_1_sorted
-opt_sorted_central_only
+opt_sorted_central_basic
 combined_solver

@@ -53,8 +53,8 @@ def main():
             mod = import_module(solver_filename)
             solve = getattr(mod, 'solve')
 
-            if input_filename == 'small-254.in':
-                pass  # breakpoint for debugging
+            if input_filename == 'small-206.in':
+                print('stop!')  # breakpoint for debugging
 
             input_path = os.path.join(INPUT_DIRECTORY, input_filename)
             graph = read_input_file(input_path, MAX_SIZE)

@@ -1,6 +1,11 @@
 from networkx import Graph
 import networkx as nx
 from networkx.algorithms import approximation as ap
+from queue import PriorityQueue
+from networkx.algorithms.centrality import edge_betweenness_centrality
+
+from graphsolver import GraphSolver
+from optimizer_sorted import optimize_sorted, kill_cycle_all_paths
 from utils import is_valid_network
 
 
@@ -12,30 +17,32 @@ def solve(G):
     Returns:
         T: networkx.Graph
     """
-    H = G.copy()
-    for v in list(G.nodes):
-        if len(list(G.neighbors(v))) == len(G.nodes) - 1:
-            t = nx.Graph()
-            t.add_node(v)
-            return t
-    t = find_dom_tree(G)
-    check = is_valid_network(H, t)
+    t = find_shortest_paths(G)
+    solver = GraphSolver(G)
+    for node in t.nodes:
+        solver.visit(node)
+    for edge in t.edges:
+        solver.add_edge(edge)
+    optimize_sorted(solver, solver.T, kill_cycle_all_paths)
+
+    check = is_valid_network(G, solver.t)
     if not check:
         raise Exception('invalid')
-    return t
+    return solver.T
 
 
-def find_dom_tree(graph: Graph):
+def find_shortest_paths(graph: Graph):
     """
     Finds an approximate small dominating tree.
     :param graph: Graph on which to find the tree
     :return: tree
     """
-    augmented = augment(graph)
-    dom_set = ap.min_weighted_dominating_set(augmented, 'weight')
-    restore(dom_set)
-    new_graph = de_augment(dom_set, graph)
-    return shortest_paths(new_graph)
+    # augmented = augment(graph)
+    # dom_set = ap.min_weighted_dominating_set(augmented, 'weight')
+    # restore(dom_set)
+    # new_graph = de_augment(dom_set, graph)
+    # return shortest_paths(new_graph)
+    return shortest_paths(graph)
 
 
 # Functions to augment the tree
@@ -85,7 +92,7 @@ def augmented_weight(edge, graph: Graph):
     :return: weight
     """
     u, v = edge
-    return graph[u][v]['weight']  # TODO: implement
+    return graph[u][v]['weight'] * 2 ** 10  # TODO: implement
 
 
 # Functions to convert the selected nodes
@@ -120,13 +127,13 @@ def de_augment(nodes: set, graph: Graph):
     return new
 
 
-def mst(graph: Graph):
-    """
-    Uses an mst algorithm to find a tree from a graph
-    :param graph: graph to consider
-    :return: tree
-    """
-    return nx.minimum_spanning_tree(graph)
+# def mst(graph: Graph):
+#     """
+#     Uses an mst algorithm to find a tree from a graph
+#     :param graph: graph to consider
+#     :return: tree
+#     """
+#     return nx.minimum_spanning_tree(graph)
 
 
 def shortest_paths(graph: Graph):
@@ -145,26 +152,12 @@ def shortest_paths(graph: Graph):
         prev = None
         for node in path:
             if prev is not None:
-                edges.add((prev, node))
+                edges.add((prev, node, graph[prev][node]['weight']))
             prev = node
     new = Graph()
     if edges:
-        new.add_edges_from(edges)
+        for edge in edges:
+            new.add_edge(edge[0], edge[1], weight=edge[2])
     else:
         new.add_node(center)
     return new
-
-
-def most_between(graph: Graph):
-    """
-    Returns the tree by selecting edges of increasing betweeness centrality which do not create cycles.
-    :param graph: graph on which to build tree
-    :return: tree with betweeness nodes
-    """
-    # TODO: implement
-    pass
-
-# g = nx.cycle_graph(5)
-# aug = augment(g)
-# nx.draw(g)
-# nx.draw(aug)

@@ -29,6 +29,7 @@ def main():
     RESULTS_FILENAME = join('outputs', 'results.csv')
 
     MAX_SIZE = 100
+    overall_start = time()
 
     with open(SOLVERS_FILENAME, 'r') as f:
         solvers = f.read().splitlines()
@@ -110,6 +111,9 @@ def main():
     with open(RESULTS_FILENAME, 'w', newline='\n') as f:
         writer = csv.writer(f)
         writer.writerows(all_costs)
+
+    overall_end = time()
+    print("Overall time: ", overall_end - overall_start)
 
 
 if __name__ == '__main__':

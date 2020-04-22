@@ -1,4 +1,4 @@
 optimized_solver_1
 optimized_solver_1_sorted
-opt_sorted_h1
+opt_sorted_central_only
 combined_solver

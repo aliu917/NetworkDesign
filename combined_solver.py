@@ -4,19 +4,19 @@ from utils import average_pairwise_distance
 from optimizer_sorted import optimize_sorted, kill_cycle
 from simple_tests import test6
 from optimizer import optimize
-import opt_sorted_h1
+import opt_sorted_central_avg
 import optimized_solver_1
 import optimized_solver_1_sorted
 import optimized_solver_1_sorted_allPaths
+import opt_sorted_central_only
 
 def solve(G):
-    ossort_T = opt_sorted_h1.solve(G)
+    ossort_T = opt_sorted_central_avg.solve(G)
     os_T = optimized_solver_1.solve(G)
-    osh1_T = optimized_solver_1_sorted.solve(G)
+    osca_T = optimized_solver_1_sorted.solve(G)
     allPaths_T = optimized_solver_1_sorted_allPaths.solve(G)
-    all_trees = [ossort_T, os_T, osh1_T, allPaths_T]
-    costs = [average_pairwise_distance(t) for t in all_trees]
-    costs.sort()
+    osco_T = opt_sorted_central_only.solve(G)
+    all_trees = [ossort_T, os_T, osca_T, allPaths_T, osco_T]
     all_trees.sort(key=lambda t: average_pairwise_distance(t))
     return all_trees[0]
 

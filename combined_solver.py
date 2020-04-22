@@ -17,12 +17,16 @@ from multiprocessing import Pool
 
 def solve(G):
     global saved_costs
-    ossort_T = opt_sorted_central_avg.solve(G)
-    if average_pairwise_distance(ossort_T) == 0:
-        return ossort_T
+
+    g = GraphSolver(G)
+    for v in list(g.G.nodes):
+        if len(list(g.neighbors(v))) == g.n - 1:  # Special case when one vertex is connected to all of them
+            g.visit(v)
+            return g.T
 
     ############### Parallelizing ########################
     pool = Pool()
+    ossort = pool.apply_async(opt_sorted_central_avg.solve, [G])
     os = pool.apply_async(optimized_solver_1.solve, [G])
     osca = pool.apply_async(optimized_solver_1_sorted.solve, [G])
     allPaths = pool.apply_async(optimized_solver_1_sorted_allPaths.solve, [G])
@@ -31,6 +35,7 @@ def solve(G):
     bs = pool.apply_async(betweenness_solver.solve, [G])
     sps = pool.apply_async(shortest_path_solver.solve, [G])
 
+    ossort_T = ossort.get(1000000000)
     os_T = os.get(1000000000)
     osca_T = osca.get(1000000000)
     allPaths_T = allPaths.get(1000000000)

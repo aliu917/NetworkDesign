@@ -25,7 +25,7 @@ def solve(G):
             return g.T
 
     ############### Parallelizing ########################
-    pool = Pool()
+    pool = Pool(8)
     ossort = pool.apply_async(opt_sorted_central_avg.solve, [G])
     os = pool.apply_async(optimized_solver_1.solve, [G])
     osca = pool.apply_async(optimized_solver_1_sorted.solve, [G])
@@ -44,10 +44,14 @@ def solve(G):
     bs_T = bs.get(1000000000)
     sps_T = sps.get(1000000000)
 
+    pool.close()
+    pool.join()
+
 
 
     ################ Non - parallelizing ####################
 
+    # ossort_T = opt_sorted_central_avg.solve(G)
     # os_T = optimized_solver_1.solve(G)
     # osca_T = optimized_solver_1_sorted.solve(G)
     # allPaths_T = optimized_solver_1_sorted_allPaths.solve(G)

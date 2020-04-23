@@ -45,6 +45,7 @@ def main():
     # for each graph
     input_filenames.sort()
     # for input_filename in ["small-150.in"]:
+
     for input_filename in input_filenames:
         costs_iter = iter(all_costs)
         times_iter = iter(all_times)

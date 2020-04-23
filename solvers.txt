@@ -1,2 +1,1 @@
-opt_sorted_central_basic
 combined_solver

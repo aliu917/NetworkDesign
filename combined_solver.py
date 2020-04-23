@@ -10,18 +10,70 @@ import optimized_solver_1_sorted
 import optimized_solver_1_sorted_allPaths
 import opt_sorted_central_only
 import opt_sorted_central_basic
+import betweenness_solver
+import shortest_path_solver
+from runner import saved_costs
+from multiprocessing import Pool
 
 def solve(G):
-    ossort_T = opt_sorted_central_avg.solve(G)
-    if average_pairwise_distance(ossort_T) == 0:
-        return ossort_T
-    os_T = optimized_solver_1.solve(G)
-    osca_T = optimized_solver_1_sorted.solve(G)
-    allPaths_T = optimized_solver_1_sorted_allPaths.solve(G)
-    osco_T = opt_sorted_central_only.solve(G)
-    oscb_T = opt_sorted_central_basic.solve(G)
-    all_trees = [ossort_T, os_T, osca_T, allPaths_T, osco_T, oscb_T]
+    global saved_costs
+
+    g = GraphSolver(G)
+    for v in list(g.G.nodes):
+        if len(list(g.neighbors(v))) == g.n - 1:  # Special case when one vertex is connected to all of them
+            g.visit(v)
+            return g.T
+
+    ############### Parallelizing ########################
+    pool = Pool(8)
+    ossort = pool.apply_async(opt_sorted_central_avg.solve, [G])
+    os = pool.apply_async(optimized_solver_1.solve, [G])
+    osca = pool.apply_async(optimized_solver_1_sorted.solve, [G])
+    allPaths = pool.apply_async(optimized_solver_1_sorted_allPaths.solve, [G])
+    osco = pool.apply_async(opt_sorted_central_only.solve, [G])
+    oscb = pool.apply_async(opt_sorted_central_basic.solve, [G])
+    bs = pool.apply_async(betweenness_solver.solve, [G])
+    sps = pool.apply_async(shortest_path_solver.solve, [G])
+
+    ossort_T = ossort.get(1000000000)
+    os_T = os.get(1000000000)
+    osca_T = osca.get(1000000000)
+    allPaths_T = allPaths.get(1000000000)
+    osco_T = osco.get(1000000000)
+    oscb_T = oscb.get(1000000000)
+    bs_T = bs.get(1000000000)
+    sps_T = sps.get(1000000000)
+
+    pool.close()
+    pool.join()
+
+
+
+    ################ Non - parallelizing ####################
+
+    # ossort_T = opt_sorted_central_avg.solve(G)
+    # os_T = optimized_solver_1.solve(G)
+    # osca_T = optimized_solver_1_sorted.solve(G)
+    # allPaths_T = optimized_solver_1_sorted_allPaths.solve(G)
+    # osco_T = opt_sorted_central_only.solve(G)
+    # oscb_T = opt_sorted_central_basic.solve(G)
+    # bs_T = betweenness_solver.solve(G)
+    # sps_T = shortest_path_solver.solve(G)
+
+
+    #########################################################
+
+    all_trees = [ossort_T, os_T, osca_T, allPaths_T, osco_T, oscb_T, bs_T, sps_T]
+    all_trees_unsorted = list(all_trees)
     all_trees.sort(key=lambda t: average_pairwise_distance(t))
+
+    second_smallest = average_pairwise_distance(all_trees[1])
+    all_costs = [average_pairwise_distance(t) for t in all_trees_unsorted]
+    individual_saved_costs = [second_smallest - cost if second_smallest - cost > 0 else 0 for cost in all_costs]
+    saved_costs = [sum(x) for x in zip(saved_costs, individual_saved_costs)]
+    print(saved_costs)
+
+
     return all_trees[0]
 
 # test6(solve)

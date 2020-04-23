@@ -25,7 +25,7 @@ def solve(G):
         solver.add_edge(edge)
     optimize_sorted(solver, solver.T, kill_cycle_all_paths)
 
-    check = is_valid_network(G, solver.t)
+    check = is_valid_network(G, solver.T)
     if not check:
         raise Exception('invalid')
     return solver.T

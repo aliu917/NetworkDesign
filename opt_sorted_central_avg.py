@@ -4,6 +4,7 @@ from utils import average_pairwise_distance
 from optimizer_sorted import optimize_sorted, kill_cycle
 from simple_tests import test6
 
+isDeterministic = True
 
 # Calculates the initial heuristic if there are no leaf/required elements for first step
 def first_heuristic(g):

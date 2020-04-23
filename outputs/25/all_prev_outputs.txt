@@ -1,0 +1,119 @@
+{
+  "1586328660.929555.in": {
+    "best": "opt_sorted_central_basic",
+    "data": {
+      "opt_sorted_central_basic": {
+        "cost": 0,
+        "runtime": 0.0006363391876220703
+      },
+      "combined_solver": {
+        "cost": 0,
+        "runtime": 0.0007150173187255859
+      }
+    }
+  },
+  "1586412007.3028626.in": {
+    "best": "opt_sorted_central_basic",
+    "data": {
+      "opt_sorted_central_basic": {
+        "cost": 12.488428571428573,
+        "runtime": 0.15967059135437012
+      },
+      "combined_solver": {
+        "cost": 12.488428571428573,
+        "runtime": 0.8993136882781982
+      }
+    }
+  },
+  "1586412046.5950363.in": {
+    "best": "opt_sorted_central_basic",
+    "data": {
+      "opt_sorted_central_basic": {
+        "cost": 2.9886666666666666,
+        "runtime": 0.06230568885803223
+      },
+      "combined_solver": {
+        "cost": 2.9886666666666666,
+        "runtime": 0.6879429817199707
+      }
+    }
+  },
+  "1586412047.6233404.in": {
+    "best": "opt_sorted_central_basic",
+    "data": {
+      "opt_sorted_central_basic": {
+        "cost": 2.9339999999999997,
+        "runtime": 0.20901799201965332
+      },
+      "combined_solver": {
+        "cost": 2.9339999999999997,
+        "runtime": 0.5202302932739258
+      }
+    }
+  },
+  "1586412048.4105988.in": {
+    "best": "opt_sorted_central_basic",
+    "data": {
+      "opt_sorted_central_basic": {
+        "cost": 0.362,
+        "runtime": 0.10286593437194824
+      },
+      "combined_solver": {
+        "cost": 0.362,
+        "runtime": 0.22180771827697754
+      }
+    }
+  },
+  "1586412049.218598.in": {
+    "best": "combined_solver",
+    "data": {
+      "opt_sorted_central_basic": {
+        "cost": 5.983133333333334,
+        "runtime": 0.3174159526824951
+      },
+      "combined_solver": {
+        "cost": 3.1115,
+        "runtime": 0.8847417831420898
+      }
+    }
+  },
+  "1586412050.1162555.in": {
+    "best": "opt_sorted_central_basic",
+    "data": {
+      "opt_sorted_central_basic": {
+        "cost": 0.263,
+        "runtime": 0.019496917724609375
+      },
+      "combined_solver": {
+        "cost": 0.263,
+        "runtime": 0.15941405296325684
+      }
+    }
+  },
+  "1586412050.9790218.in": {
+    "best": "combined_solver",
+    "data": {
+      "opt_sorted_central_basic": {
+        "cost": 2.916,
+        "runtime": 0.2176048755645752
+      },
+      "combined_solver": {
+        "cost": 1.635,
+        "runtime": 0.6760120391845703
+      }
+    }
+  },
+  "1586412052.1780858.in": {
+    "best": "combined_solver",
+    "data": {
+      "opt_sorted_central_basic": {
+        "cost": 9.319999999999997,
+        "runtime": 0.07678794860839844
+      },
+      "combined_solver": {
+        "cost": 0.597,
+        "runtime": 0.14597296714782715
+      }
+    }
+  }
+}

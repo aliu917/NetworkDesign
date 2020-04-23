@@ -5,6 +5,7 @@ from optimizer_sorted import optimize_sorted, kill_cycle
 from simple_tests import test6
 
 # Good for small-150, small-160, small-168, small-17, small-174, small-176
+isDeterministic = False
 
 # Calculates the initial heuristic if there are no leaf/required elements for first step
 def first_heuristic(g):

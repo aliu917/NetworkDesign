@@ -76,6 +76,13 @@ if __name__ == "__main__":
         labels[v] = r'${}$'.format(v)
     nx.draw_networkx_labels(G_in, pos, labels, font_size=12)
 
+    edge_labels = nx.get_edge_attributes(G_in,'weight')
+    keys = list(edge_labels.keys())
+    for k in keys:
+        if G_out.edges.get(k, None) is None:
+            del edge_labels[k]
+    nx.draw_networkx_edge_labels(G_in,pos,edge_labels=edge_labels, font_size=7)
+
     print('Blue = node/edge in the solution graph')
     print('Green = node/edge of a neighbor of nodes in solution graph')
     print('Red = node/edge in the input graph but not in the solution graph')

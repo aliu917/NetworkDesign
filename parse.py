@@ -18,7 +18,7 @@ def validate_file(path):
     return True
 
 
-def read_input_file(path, max_size):
+def read_input_file(path, max_size=None):
     """
     Parses and validates an input file
 
@@ -44,14 +44,12 @@ def read_input_file(path, max_size):
             assert 0 < float(tokens[2]) < 100
 
         G = nx.parse_edgelist(lines, nodetype=int, data=(("weight", float),))
-        for i in range(n):
-            if (i, i) in G.edges:
-                G.remove_edge(i, i)
-                
         G.add_nodes_from(range(n))
 
         assert nx.is_connected(G)
-        assert len(G) <= max_size
+
+        if max_size is not None:
+            assert len(G) <= max_size
 
         return G
 
@@ -101,6 +99,7 @@ def read_output_file(path, G):
             w["weight"] = edge_in_G["weight"]
         T.add_nodes_from(nodes)
 
+        assert len(T) > 0
         assert utils.is_valid_network(G, T)
 
         return T

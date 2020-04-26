@@ -27,7 +27,8 @@ solver_filenames = [
         'opt_sorted_central_only',
         'opt_sorted_central_basic',
         'betweenness_solver',
-        'shortest_path_solver'
+        'shortest_path_solver',
+        'min_average_distance_solver'
     ]
 
 cacher = None # sketchily give this module a cacher object later if you want the speedup

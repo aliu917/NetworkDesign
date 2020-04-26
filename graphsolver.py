@@ -34,7 +34,7 @@ class GraphSolver:
         self.T_cost = float('inf')
         self.min_T_dict = {}
         self.max_T_edge_weight = 101
-        self.centralities = nx.closeness_centrality(G);
+        self.centralities = nx.closeness_centrality(G, distance="weight")
 
     def nodes(self):
         return self.G.nodes
@@ -191,7 +191,7 @@ class GraphSolver:
         if not any(self.in_tree):
             # random.seed(0)
             chosenV = random.randint(0, self.n - 1)
-            if start_v:
+            if start_v is not None:
                 chosenV = start_v
             elif first_h:
                 chosenV = first_h(self)

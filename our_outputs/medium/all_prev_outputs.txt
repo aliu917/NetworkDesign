@@ -81,7 +81,7 @@
         "runtime": null
       },
       "optimized_solver_1": {
-        "cost": 91.90066666666654,
+        "cost": 91.90066666666644,
         "runtime": null
       },
       "optimized_solver_1_sorted": {
@@ -192,7 +192,7 @@
         "runtime": null
       },
       "optimized_solver_1": {
-        "cost": 26.139672727272732,
+        "cost": 26.13967272727273,
         "runtime": null
       },
       "optimized_solver_1_sorted": {

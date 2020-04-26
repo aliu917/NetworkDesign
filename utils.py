@@ -2,6 +2,11 @@ from collections import defaultdict
 
 import networkx as nx
 from collections import defaultdict
+from os import makedirs
+from os.path import join, isfile, dirname
+import json
+from parse import write_output_file
+
 
 
 def is_valid_network(G, T):
@@ -105,3 +110,96 @@ def average_pairwise_distance_fast(T):
             w = T[c][p]["weight"]
             cost += 2 * a * b * w
     return cost / (len(T) * (len(T) - 1))
+
+class Cacher():
+    def __init__(self, OUTPUT_DIRECTORY):
+        self.OUTPUT_DIRECTORY = OUTPUT_DIRECTORY
+        self.PREV_OUTPUTS_FILENAME = join(OUTPUT_DIRECTORY, 'all_prev_outputs.txt')
+
+        # Key: input filename
+        # Value: {best: solver_filename, data: {solver_filename: {cost: x, time: x}}
+        self.data = {}
+        self.reload_cache()
+        self.changes = []
+
+    def reload_cache(self):
+        if isfile(self.PREV_OUTPUTS_FILENAME):
+            with open(self.PREV_OUTPUTS_FILENAME, 'r') as f:
+                self.data = json.load(f)
+        else:
+            print("WARNING: No cached output found")
+            self.data = {}
+
+    def is_cached(self, input_filename, solver_filename):
+        return input_filename in self.data.keys() \
+                and solver_filename in self.data[input_filename]['data'].keys()
+
+    def get_cost(self, input_filename, solver_filename):
+        # Errors if is_cached() would have returned False
+        return self.data[input_filename]['data'][solver_filename]['cost']
+
+    def get_runtime(self, input_filename, solver_filename):
+        # Errors if is_cached() would have returned False
+        return self.data[input_filename]['data'][solver_filename]['runtime']
+
+    def get_best_cost(self, input_filename, solver_filename):
+        # Errors if is_cached() would have returned False
+        return self.data[input_filename]['data'][self.get_best_solver(input_filename)]['cost']
+
+    def get_best_solver(self, input_filename):
+        return self.data[input_filename]['best']
+
+    def get_cache(self):
+        return self.data
+
+    def cache_if_better_or_none(self, input_filename, solver_filename, cost, runtime, tree):
+        # Update prev_outputs and .out only if a previous run was worse or it was never saved before
+        out_file = join(self.OUTPUT_DIRECTORY, input_filename[:-3], solver_filename + '.out')
+        if not isfile(out_file) or not self.is_cached(input_filename, solver_filename) \
+                or self.get_cost(input_filename, solver_filename) > cost:
+
+            makedirs(dirname(out_file), exist_ok=True)
+            write_output_file(tree, out_file)
+
+            self.cache(input_filename, solver_filename, cost, runtime)
+
+            if self.get_cost(input_filename, solver_filename) > cost:
+                print('New best solver for {} is {} with cost {} and time {}' \
+                        .format(input_filename, solver_filename, cost, runtime))
+
+    def cache(self, input_filename, solver_filename, cost, runtime):
+        self.changes.append((input_filename, solver_filename))
+        if not input_filename in self.data.keys():
+            self.data[input_filename] = {'best': solver_filename, 'data': {solver_filename:{'cost': cost, 'runtime': runtime}}}
+            return
+        
+        self.data[input_filename]['data'][solver_filename] = {'cost': cost, 'runtime': runtime}
+        if cost < self.get_best_cost(input_filename, solver_filename):
+            self.data[input_filename]['best'] = solver_filename
+
+    def override(self, data):
+        if len(data.keys()) == 0:
+            return self.data
+
+        for input_filename, solver_filename in self.changes:
+            if not input_filename in data.keys():
+                data[input_filename] = {'best': solver_filename, 'data': 
+                    {solver_filename:{'cost': self.get_cost(input_filename, solver_filename), 
+                                      'runtime': self.get_runtime(input_filename, solver_filename)}}}
+            else:
+                if data[input_filename]['data'][data[input_filename]['best']]['cost'] \
+                    > self.get_cost(input_filename, solver_filename):
+                    data[input_filename]['best'] = solver_filename
+
+                data[input_filename]['data'][solver_filename] = {'cost': self.get_cost(input_filename, solver_filename), 
+                                          'runtime': self.get_runtime(input_filename, solver_filename)}
+
+        return data
+        
+    def save(self):
+        with open(self.PREV_OUTPUTS_FILENAME, 'w') as f:
+            json.dump(self.data, f, indent=2)
+
+    def save_data(self, data):
+        with open(self.PREV_OUTPUTS_FILENAME, 'w') as f:
+            json.dump(data, f, indent=2)

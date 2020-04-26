@@ -20,6 +20,10 @@ import multiprocessing
 from multiprocessing import Pool
 import multiprocessing.pool
 
+from utils import Cacher
+from multiprocessing import Manager
+from multiprocessing.managers import BaseManager
+
 
 saved_costs = [0] * 8
 
@@ -52,47 +56,56 @@ class MyPool(multiprocessing.pool.Pool):
     Process = NoDaemonProcess
 
 
-def solve_graph(input_filename):
-    global all_costs
-    global all_times
-    costs_iter = iter(all_costs)
-    times_iter = iter(all_times)
-    # print("File name:", input_filename)
-    # for each solver
-    for solver_filename in solvers:
-        costs = []
-        times = []
-        # get the solver from module name
-        mod = import_module(solver_filename)
-        solve = getattr(mod, 'solve')
+def solve_graph(config):
+    input_filenames, cacher = config
+    for input_filename in input_filenames:
+        global all_costs
+        global all_times
+        costs_iter = iter(all_costs)
+        times_iter = iter(all_times)
+        # print("File name:", input_filename)
+        # for each solver
+        for solver_filename in solvers:
+            costs = []
+            times = []
+            # get the solver from module name
+            mod = import_module(solver_filename)
+            solve = getattr(mod, 'solve')
 
-        if input_filename == 'small-206.in':
-            print('stop!')  # breakpoint for debugging
+            # pass these to the combined solver
+            mod.cacher = cacher
+            mod.OUTPUT_DIRECTORY = OUTPUT_DIRECTORY
+            mod.input_filename = input_filename 
 
-        input_path = os.path.join(INPUT_DIRECTORY, input_filename)
-        graph = read_input_file(input_path, MAX_SIZE)
-        start = time()
-        tree = solve(graph)
-        end = time()
-        times.append(end - start)
+            if input_filename == 'small-206.in':
+                print('stop!')  # breakpoint for debugging
 
-        if not is_valid_network(graph, tree):
-            print(solver_filename, 'is invalid!')
-            nx.draw(graph)
-            return
+            input_path = os.path.join(INPUT_DIRECTORY, input_filename)
+            graph = read_input_file(input_path, MAX_SIZE)
+            start = time()
+            tree = solve(graph)
+            end = time()
+            times.append(end - start)
 
-        # print(solver_filename, 'Nodes: ', tree.nodes)
-        # for e in tree.edges:
-        #     print("edge:", e, "; weight:", weight(graph, e))
-        cost = average_pairwise_distance(tree)
-        print(solver_filename, 'running', input_filename, '\n Average cost: ', cost, '\n Average time:', sum(times) / len(times), '\n')
-        costs.append(cost)
+            if not is_valid_network(graph, tree):
+                print(solver_filename, 'is invalid!')
+                nx.draw(graph)
+                return
 
-        out_file = os.path.join(OUTPUT_DIRECTORY, input_filename[:-3], solver_filename + '.out')
-        os.makedirs(os.path.dirname(out_file), exist_ok=True)
-        write_output_file(tree, out_file)
+            # print(solver_filename, 'Nodes: ', tree.nodes)
+            # for e in tree.edges:
+            #     print("edge:", e, "; weight:", weight(graph, e))
+            cost = average_pairwise_distance(tree)
+            print(solver_filename, 'running', input_filename, '\n Average cost: ', cost, '\n Average time:', sum(times) / len(times), '\n')
+            costs.append(cost)
 
-        # print(solver_filename, 'completed in average time:', sum(times) / len(times))
+            out_file = os.path.join(OUTPUT_DIRECTORY, input_filename[:-3], solver_filename + '.out')
+            os.makedirs(os.path.dirname(out_file), exist_ok=True)
+            write_output_file(tree, out_file)
+
+        # print('\n\n\n\n\nfinal data', cacher.get_cache(), '\n\n\n\n\n\n')
+
+            # print(solver_filename, 'completed in average time:', sum(times) / len(times))
 
 
 def main():
@@ -110,16 +123,38 @@ def main():
 
     ########### Parallelized ##########################
 
+    BaseManager.register('Cacher', Cacher)
+    manager = BaseManager()
+    manager.start()
 
-    pool = MyPool()
-    pool.map(solve_graph, input_filenames)
-    pool.close()
-    pool.join()
+    # Create NUM_THREADS or NUM_THREADS+1 threads
+    NUM_THREADS = 4
+    INPUTS_PER_SAVE = 10
+
+    NUM_THREADS = min(INPUTS_PER_SAVE, NUM_THREADS)
+    for j in range(0, len(input_filenames), INPUTS_PER_SAVE):
+        pool = MyPool()
+
+        size = INPUTS_PER_SAVE // NUM_THREADS
+        NUM_THREADS += (INPUTS_PER_SAVE > NUM_THREADS*size) # If we need to round up
+
+        cachers = [manager.Cacher(OUTPUT_DIRECTORY) for i in range(NUM_THREADS)]
+        pool.map(solve_graph, [(input_filenames[j+i*size:j+(i+1)*size], cachers[i]) \
+                                     for i in range(NUM_THREADS)])
+        # pool.map(solve_graph, input_filenames)
+        pool.close()
+        pool.join()
+
+        # Do this in sequence (not parallel) so race conditions don't happen
+        data = {}
+        for cacher in cachers:
+            data = cacher.override(data)
+
+        cachers[0].save_data(data)
 
     ########### Non - Parallelized ######################
 
-    # for input_filename in input_filenames:
-    #     solve_graph(input_filename)
+    # solve_graph(input_filename)
 
     ######################################################
 

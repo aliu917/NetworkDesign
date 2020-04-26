@@ -17,7 +17,7 @@ from multiprocessing import Pool
 
 from importlib import import_module
 from parse import read_output_file
-from os.path import join
+from os.path import join, isfile
 
 solver_filenames = [
         'opt_sorted_central_avg',
@@ -60,7 +60,6 @@ def solve(G):
     solver_filenames = [f for i, f in enumerate(solver_filenames) if i not in skip]
     solvers = [s for i, s in enumerate(solvers) if i not in skip]
     trees = [] # to be populated
-    print('solvers to do', solver_filenames)
 
     ############### Parallelizing ########################
     if len(solvers) > 0:
@@ -96,7 +95,7 @@ def solve(G):
     all_costs = sorted(all_costs)
 
     # Print saved costs
-    second_smallest = sorted(all_costs)[1]
+    second_smallest = all_costs[1]
     individual_saved_costs = [second_smallest - cost if second_smallest - cost > 0 else 0 for cost in all_costs]
     saved_costs = [sum(x) for x in zip(saved_costs, individual_saved_costs)]
     print(saved_costs)
@@ -105,7 +104,16 @@ def solve(G):
     min_tree = all_trees[0]
     if min_tree is None:
         out_file = join(OUTPUT_DIRECTORY, input_filename[:-3], solver_filenames[0] + '.out')
-        min_tree = read_output_file(out_file, G)
+        if isfile(out_file):
+            print('read outfile', out_file)
+            min_tree = read_output_file(out_file, G)
+        else:
+            print("WARNING: all_prev_outputs.txt is probably out of sync. {} was not found.".format(out_file))
+            print('Recalculating for input {}'.format(input_filename))
+            # Recalculate for this input
+            prev_type = cacher.set_cache_type('none')
+            min_tree = solve(G)
+            cacher.set_cache_type(prev_type)
 
     return min_tree
 

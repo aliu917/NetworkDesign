@@ -174,6 +174,10 @@ class Cacher():
     def get_cache(self):
         return self.data
 
+    def set_cache_type(self, cache_type):
+        prev_cache_type, self.cache_type = self.cache_type, cache_type
+        return prev_cache_type
+
     def cache_if_better_or_none(self, input_filename, solver_filename, cost, runtime, tree):
         # Update prev_outputs and .out only if a previous run was worse or it was never saved before
         out_file = join(self.OUTPUT_DIRECTORY, input_filename[:-3], solver_filename + '.out')

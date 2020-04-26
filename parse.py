@@ -46,6 +46,10 @@ def read_input_file(path, max_size=None):
         G = nx.parse_edgelist(lines, nodetype=int, data=(("weight", float),))
         G.add_nodes_from(range(n))
 
+        for i in range(n):
+            if (i, i) in G.edges:
+                G.remove_edge(i, i)
+       
         assert nx.is_connected(G)
 
         if max_size is not None:

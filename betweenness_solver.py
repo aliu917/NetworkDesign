@@ -8,6 +8,7 @@ from networkx.algorithms.centrality import edge_betweenness_centrality
 from graphsolver import GraphSolver
 from optimizer_sorted import optimize_sorted, kill_cycle_all_paths
 
+isDeterministic = False
 
 def solve(G):
     """

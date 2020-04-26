@@ -3,6 +3,7 @@ from graphsolver import weight
 from optimizer_sorted import optimize_sorted, kill_cycle_all_paths
 from simple_tests import test6
 
+isDeterministic = False
 
 # Calculates the initial heuristic if there are no leaf/required elements for first step
 def first_heuristic(g):

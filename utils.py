@@ -112,15 +112,30 @@ def average_pairwise_distance_fast(T):
     return cost / (len(T) * (len(T) - 1))
 
 class Cacher():
-    def __init__(self, OUTPUT_DIRECTORY):
+    def __init__(self, OUTPUT_DIRECTORY, cache_type="all"):
+        self.NEVER_USE_CACHE_FILENAME = "never_use_cache.txt"
         self.OUTPUT_DIRECTORY = OUTPUT_DIRECTORY
         self.PREV_OUTPUTS_FILENAME = join(OUTPUT_DIRECTORY, 'all_prev_outputs.txt')
+
+        assert cache_type == "all" or cache_type == "some" or cache_type == "none"
+        self.cache_type = cache_type
+        self.cache_exceptions = []
+        if cache_type == "some":
+            self.cache_exceptions = self.load_cache_exceptions()
 
         # Key: input filename
         # Value: {best: solver_filename, data: {solver_filename: {cost: x, time: x}}
         self.data = {}
         self.reload_cache()
         self.changes = []
+
+    def load_cache_exceptions(self):
+        if isfile(self.PREV_OUTPUTS_FILENAME):
+            with open(self.NEVER_USE_CACHE_FILENAME, 'r') as f:
+                return f.read().splitlines()
+        else:
+            print("WARNING: never_use_cache.txt not found")
+            return []
 
     def reload_cache(self):
         if isfile(self.PREV_OUTPUTS_FILENAME):
@@ -131,22 +146,29 @@ class Cacher():
             self.data = {}
 
     def is_cached(self, input_filename, solver_filename):
+        if self.cache_type == "none" or solver_filename in self.cache_exceptions:
+            return False
+        else:
+            return self.is_cached_no_exceptions(input_filename, solver_filename)
+
+    def is_cached_no_exceptions(self, input_filename, solver_filename):
         return input_filename in self.data.keys() \
                 and solver_filename in self.data[input_filename]['data'].keys()
 
     def get_cost(self, input_filename, solver_filename):
-        # Errors if is_cached() would have returned False
+        # Errors if is_cached_no_exceptions() would have returned False
         return self.data[input_filename]['data'][solver_filename]['cost']
 
     def get_runtime(self, input_filename, solver_filename):
-        # Errors if is_cached() would have returned False
+        # Errors if is_cached_no_exceptions() would have returned False
         return self.data[input_filename]['data'][solver_filename]['runtime']
 
     def get_best_cost(self, input_filename, solver_filename):
-        # Errors if is_cached() would have returned False
+        # Errors if is_cached_no_exceptions() would have returned False
         return self.data[input_filename]['data'][self.get_best_solver(input_filename)]['cost']
 
     def get_best_solver(self, input_filename):
+        # Errors if is_cached_no_exceptions() would have returned False
         return self.data[input_filename]['best']
 
     def get_cache(self):
@@ -155,7 +177,7 @@ class Cacher():
     def cache_if_better_or_none(self, input_filename, solver_filename, cost, runtime, tree):
         # Update prev_outputs and .out only if a previous run was worse or it was never saved before
         out_file = join(self.OUTPUT_DIRECTORY, input_filename[:-3], solver_filename + '.out')
-        if not isfile(out_file) or not self.is_cached(input_filename, solver_filename) \
+        if not isfile(out_file) or not self.is_cached_no_exceptions(input_filename, solver_filename) \
                 or self.get_cost(input_filename, solver_filename) > cost:
 
             makedirs(dirname(out_file), exist_ok=True)

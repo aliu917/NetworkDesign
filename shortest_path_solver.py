@@ -8,6 +8,7 @@ from graphsolver import GraphSolver
 from optimizer_sorted import optimize_sorted, kill_cycle_all_paths
 from utils import is_valid_network
 
+isDeterministic = False
 
 def solve(G):
     """

@@ -1,9 +1,9 @@
 from graphsolver import GraphSolver
 from graphsolver import weight
 from utils import average_pairwise_distance
-from optimizer_sorted import optimize_sorted, kill_cycle
-from simple_tests import test6
-from optimizer import optimize
+# from optimizer_sorted import optimize_sorted, kill_cycle
+# from simple_tests import test6
+# from optimizer import optimize
 # import opt_sorted_central_avg
 # import optimized_solver_1
 # import optimized_solver_1_sorted
@@ -48,26 +48,29 @@ def solve(G):
     skipped_solvers = []
 
     # Don't calculate for inputs we already know costs for deterministically
+    skip = []
     if cacher is not None:
-        skip = []
         for i in range(len(solvers)):
-            if getattr(solvers[i], 'isDeterministic', False) and cacher.is_cached(input_filename, solver_filenames[i]):
+            # It turns out all of our algorithms are not deterministic so that condition is going to be deleted
+            if cacher.is_cached(input_filename, solver_filenames[i]):
+            # if getattr(solvers[i], 'isDeterministic', False) and cacher.is_cached(input_filename, solver_filenames[i]):
                 skipped_costs.append(cacher.get_cost(input_filename, solver_filenames[i]))
                 skip.append(i)
                 skipped_solvers.append(solver_filenames[i])
-        solver_filenames = [f for i, f in enumerate(solver_filenames) if i not in skip]
-        solvers = [s for i, s in enumerate(solvers) if i not in skip]
-    else:
-        print('WARNING: Cacher object not given to combined_solver. Not using cache')
+    solver_filenames = [f for i, f in enumerate(solver_filenames) if i not in skip]
+    solvers = [s for i, s in enumerate(solvers) if i not in skip]
+    trees = [] # to be populated
+    print('solvers to do', solver_filenames)
 
     ############### Parallelizing ########################
-    pool = Pool(len(solvers))
+    if len(solvers) > 0:
+        pool = Pool(len(solvers))
 
-    async_solvers = [pool.apply_async(solver.solve, [G]) for solver in solvers]
-    trees = [async_solver.get(1000000000) for async_solver in async_solvers]
+        async_solvers = [pool.apply_async(solver.solve, [G]) for solver in solvers]
+        trees = [async_solver.get(1000000000) for async_solver in async_solvers]
 
-    pool.close()
-    pool.join()
+        pool.close()
+        pool.join()
 
 
     ################ Non - parallelizing ####################

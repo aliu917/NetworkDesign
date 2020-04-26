@@ -7,6 +7,7 @@ Usage: python runner.py inputs\25 outputs\25
 import csv
 import os
 import sys
+import argparse
 from importlib import import_module
 from os import listdir
 from os.path import join
@@ -24,11 +25,17 @@ from utils import Cacher
 from multiprocessing import Manager
 from multiprocessing.managers import BaseManager
 
+parser = argparse.ArgumentParser(description='runner file')
+parser.add_argument('input', type=str)
+parser.add_argument('output', type=str)
+parser.add_argument('use_cache', choices=['none', 'some', 'all'], \
+        help='it still saves to cache. some means it looks at never_use_cache.txt') # default is false
+args = parser.parse_args()
 
 saved_costs = [0] * 8
 
-INPUT_DIRECTORY = sys.argv[1]
-OUTPUT_DIRECTORY = sys.argv[2]
+INPUT_DIRECTORY = args.input
+OUTPUT_DIRECTORY = args.output
 RESULTS_FILENAME = join('outputs', 'results.csv')
 
 MAX_SIZE = 100
@@ -110,7 +117,6 @@ def solve_graph(config):
 
 def main():
     global saved_costs
-    assert len(sys.argv) == 3
     overall_start = time()
 
 
@@ -138,7 +144,7 @@ def main():
         size = INPUTS_PER_SAVE // NUM_THREADS
         NUM_THREADS += (INPUTS_PER_SAVE > NUM_THREADS*size) # If we need to round up
 
-        cachers = [manager.Cacher(OUTPUT_DIRECTORY) for i in range(NUM_THREADS)]
+        cachers = [manager.Cacher(OUTPUT_DIRECTORY, args.use_cache) for i in range(NUM_THREADS)]
         pool.map(solve_graph, [(input_filenames[j+i*size:j+(i+1)*size], cachers[i]) \
                                      for i in range(NUM_THREADS)])
         # pool.map(solve_graph, input_filenames)
@@ -149,7 +155,6 @@ def main():
         data = {}
         for cacher in cachers:
             data = cacher.override(data)
-
         cachers[0].save_data(data)
 
     ########### Non - Parallelized ######################

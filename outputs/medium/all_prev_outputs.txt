@@ -188,7 +188,7 @@
     "best": "opt_sorted_central_basic",
     "data": {
       "opt_sorted_central_avg": {
-        "cost": 28.668,
+        "cost": 23.11183333333333,
         "runtime": null
       },
       "optimized_solver_1": {
@@ -3481,7 +3481,7 @@
     "best": "betweenness_solver",
     "data": {
       "opt_sorted_central_avg": {
-        "cost": 1.0600000000000003,
+        "cost": 1.0266666666666666,
         "runtime": null
       },
       "optimized_solver_1": {
@@ -5183,7 +5183,7 @@
     "best": "opt_sorted_central_basic",
     "data": {
       "opt_sorted_central_avg": {
-        "cost": 73.91950877192977,
+        "cost": 71.10138235294119,
         "runtime": null
       },
       "optimized_solver_1": {

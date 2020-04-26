@@ -4,7 +4,7 @@ from utils import average_pairwise_distance
 from optimizer_sorted import optimize_sorted, kill_cycle
 from simple_tests import test6
 
-isDeterministic = True
+isDeterministic = False
 
 
 # GOOD FOR small-109

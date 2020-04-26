@@ -26,7 +26,8 @@ def main():
     SOLVERS_FILENAME = 'solvers.txt'
     INPUT_DIRECTORY = sys.argv[1]
     OUTPUT_DIRECTORY = sys.argv[2]
-    RESULTS_FILENAME = join('outputs', 'results.csv')
+    RESULTS_FILENAME = join('our_outputs', 'results.csv')
+    PREV_OUTPUTS_FILENAME = join(OUTPUT_DIRECTORY, 'all_prev_outputs.txt')
 
     cacher = Cacher(OUTPUT_DIRECTORY)
 
@@ -43,6 +44,15 @@ def main():
         all_costs.append([])
         all_times.append([])
 
+    print('um', PREV_OUTPUTS_FILENAME)
+    if os.path.isfile(PREV_OUTPUTS_FILENAME):
+        with open(PREV_OUTPUTS_FILENAME, 'r') as f:
+            all_prev_outputs = json.load(f)
+    else:
+        # Key: input filename
+        # Value: {best: solver_filename, data: {solver_filename: {cost: x, time: x}}
+        all_prev_outputs = {}
+
     # for each graph
     input_filenames.sort()
     # for input_filename in ["small-150.in"]:
@@ -51,6 +61,12 @@ def main():
         times_iter = iter(all_times)
         # print('costs_iter', costs_iter.peek())
         print("File name:", input_filename)
+
+        # {best: solver_filename, data: {solver_filename: {cost: x, runtime: x}}
+        prev_outputs = all_prev_outputs.get(input_filename, {'best': None, 'data': {}})
+        if prev_outputs['best'] is None:
+            # Hasn't been run before
+            all_prev_outputs[input_filename] = prev_outputs
 
         # for each solver
         for solver_filename in solvers:
@@ -65,7 +81,7 @@ def main():
             print(cacher.is_cached(input_filename, solver_filename), 'for', input_filename, solver_filename)
             if getattr(mod, 'isDeterministic', False) and cacher.is_cached(input_filename, solver_filename):
                 print('{} skipped computation because it is deterministic and was run before'.format(solver_filename))
-                
+
                 cost = cacher.get_cost(input_filename, solver_filename)
                 runtime = cacher.get_runtime(input_filename, solver_filename)
 

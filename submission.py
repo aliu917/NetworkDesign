@@ -12,11 +12,19 @@ from parse import read_input_file, write_output_file, read_output_file
 from utils import is_valid_network, average_pairwise_distance
 from shutil import copyfile
 
+def get_size_num(str):
+    if "small" in str:
+        return 25
+    if "medium" in str:
+        return 50
+    if "large" in str:
+        return 100
+
 def main():
     SOLVERS_FILENAME = 'solvers.txt'
-    INPUT_DIRECTORY = ["inputs/large", "inputs/medium", "inputs/small"]
-    OUTPUT_DIRECTORY = ["outputs/large", "outputs/medium", "outputs/small"]
-    SUBMISSION_DIRECTORY = "outputs/submission"
+    INPUT_DIRECTORY = ["our_inputs/large", "our_inputs/medium", "our_inputs/small"]
+    OUTPUT_DIRECTORY = ["our_outputs/large", "our_outputs/medium", "our_outputs/small"]
+    SUBMISSION_DIRECTORY = "outputs"
 
     with open(SOLVERS_FILENAME, 'r') as f:
         solvers = f.read().splitlines()
@@ -34,6 +42,7 @@ def main():
     all_costs = []
 
     for sizes in OUTPUT_DIRECTORY:
+        size = os.path.basename(sizes)
         graphs = os.listdir(sizes)
         graphs.sort()
         for graph in graphs:
@@ -45,7 +54,7 @@ def main():
                 out_file = os.path.join(SUBMISSION_DIRECTORY, graph + '.out')
                 os.makedirs(os.path.dirname(out_file), exist_ok=True)
                 copyfile(os.path.join(sizes, graph, f), out_file)
-                input_path = os.path.join("inputs", os.path.basename(sizes), graph) + ".in"
+                input_path = os.path.join("our_inputs", size, graph) + ".in"
                 g = read_input_file(input_path, 100)
                 tree = read_output_file(out_file, g)
                 cost = average_pairwise_distance(tree)

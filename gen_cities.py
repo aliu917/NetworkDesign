@@ -67,7 +67,7 @@ if __name__ == "__main__":
         add_edges(edges)
 
     # Make the folder
-    foldername = "./inputs/" + str(city_rank) + '/'
+    foldername = "./our_inputs/" + str(city_rank) + '/'
     Path(foldername).mkdir(parents=True, exist_ok=True)
 
     # Store in a .in file

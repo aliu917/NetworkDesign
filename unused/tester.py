@@ -1,9 +1,9 @@
 """
-Computes the costs of all graphs in the specified directory (outputs\25), writing the results to a csv file.
+Computes the costs of all graphs in the specified directory (our_outputs\25), writing the results to a csv file.
 
 Currently doesn't calculate accurately, fix if running runner takes too much time.
 
-Usage: python tester.py outputs/25 [outputs/results.csv]
+Usage: python tester.py our_outputs/25 [our_outputs/results.csv]
 """
 import csv
 import sys
@@ -16,7 +16,7 @@ from utils import average_pairwise_distance
 if __name__ == '__main__':
     assert len(sys.argv) <= 3
     OUTPUTS_DIRECTORY = sys.argv[1]
-    RESULTS_FILENAME = join('outputs', 'results.csv')
+    RESULTS_FILENAME = join('our_outputs', 'results.csv')
     if len(sys.argv) == 3:
         RESULTS_FILENAME = sys.argv[2]
 

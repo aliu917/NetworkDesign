@@ -1,8 +1,8 @@
 """
-Runs all solvers in solvers.txt on all graphs in specified directory (inputs\25),
-writing the outputs to corresponding entries in specified directory (outputs\25).
+Runs all solvers in solvers.txt on all graphs in specified directory (our_inputs\25),
+writing the our_outputs to corresponding entries in specified directory (our_outputs\25).
 
-Usage: python runner.py inputs\25 outputs\25
+Usage: python runner.py our_inputs\25 our_outputs\25
 """
 import csv
 import os
@@ -26,7 +26,7 @@ def main():
     SOLVERS_FILENAME = 'solvers.txt'
     INPUT_DIRECTORY = sys.argv[1]
     OUTPUT_DIRECTORY = sys.argv[2]
-    RESULTS_FILENAME = join('outputs', 'results.csv')
+    RESULTS_FILENAME = join('our_outputs', 'results.csv')
 
     MAX_SIZE = 100
     overall_start = time()

@@ -1,8 +1,8 @@
 """
-Runs all solvers in solvers.txt on all graphs in specified directory (inputs\25),
-writing the outputs to corresponding entries in specified directory (outputs\25).
+Runs all solvers in solvers.txt on all graphs in specified directory (our_inputs\25),
+writing the our_outputs to corresponding entries in specified directory (our_outputs\25).
 
-Usage: python runner.py inputs\25 outputs\25
+Usage: python runner.py our_inputs\25 our_outputs\25
 """
 import csv
 import os
@@ -36,7 +36,7 @@ saved_costs = [0] * 8
 
 INPUT_DIRECTORY = args.input
 OUTPUT_DIRECTORY = args.output
-RESULTS_FILENAME = join('outputs', 'results.csv')
+RESULTS_FILENAME = join('our_outputs', 'results.csv')
 
 MAX_SIZE = 100
 
@@ -155,6 +155,7 @@ def main():
         data = {}
         for cacher in cachers:
             data = cacher.override(data)
+
         cachers[0].save_data(data)
 
     ########### Non - Parallelized ######################

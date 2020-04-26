@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import argparse
 
 # Example: 
-# python3.7 vis_graph.py --input inputs/25/1586412046.5950363.in --output outputs/25/1586412046.5950363/optimized_solver_1_sorted.out
+# python3.7 vis_graph.py --input our_inputs/25/1586412046.5950363.in --output our_outputs/25/1586412046.5950363/optimized_solver_1_sorted.out
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='vis graph')

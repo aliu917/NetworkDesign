@@ -1034,5 +1034,3335 @@
         "runtime": null
       }
     }
+  },
+  "medium-126.in": {
+    "best": "opt_sorted_central_avg",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 33.1607238095238,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 42.383308823529404,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 37.92352747252749,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 37.92352747252749,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 44.8643666666667,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 40.447250000000004,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 40.58129523809523,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 41.95923333333335,
+        "runtime": null
+      }
+    }
+  },
+  "medium-127.in": {
+    "best": "opt_sorted_central_avg",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 4.683428571428571,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 11.213000000000001,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 11.213000000000001,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 5.8342857142857145,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 4.683428571428571,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 4.683428571428572,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 11.213000000000001,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 4.805499999999999,
+        "runtime": null
+      }
+    }
+  },
+  "medium-128.in": {
+    "best": "optimized_solver_1",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 6.1404,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 2.5252,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 2.5252,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 2.5252,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 3.4228666666666663,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 4.892000000000001,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 4.377,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 3.4228666666666667,
+        "runtime": null
+      }
+    }
+  },
+  "medium-129.in": {
+    "best": "shortest_path_solver",
+    "data": {
+      "optimized_solver_1": {
+        "cost": 570.471680769231,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 570.471680769231,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 570.471680769231,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 570.471680769231,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 570.4716807692305,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 570.4716807692308,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 570.4716807692314,
+        "runtime": null
+      },
+      "opt_sorted_central_avg": {
+        "cost": 570.471680769231,
+        "runtime": null
+      }
+    }
+  },
+  "medium-130.in": {
+    "best": "betweenness_solver",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 109.37483692307688,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 111.6628769230769,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 109.37483692307688,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 115.15492307692304,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 109.37483692307688,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 104.903207977208,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 101.88521846153847,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 103.15659076923086,
+        "runtime": null
+      }
+    }
+  },
+  "medium-131.in": {
+    "best": "shortest_path_solver",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 5.799999999999999,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 6.690000000000001,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 6.690000000000001,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 6.690000000000001,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 13.118,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 4.626,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 8.66,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 4.292,
+        "runtime": null
+      }
+    }
+  },
+  "medium-133.in": {
+    "best": "optimized_solver_1_sorted_allPaths",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 37.67628571428572,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 41.70980952380955,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 41.6168421052632,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 37.44357894736844,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 38.34783625730998,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 40.47251461988303,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 37.44826315789476,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 41.64333333333338,
+        "runtime": null
+      }
+    }
+  },
+  "medium-134.in": {
+    "best": "optimized_solver_1_sorted_allPaths",
+    "data": {
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 2.9528000000000003,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 8.89768888888889,
+        "runtime": null
+      },
+      "opt_sorted_central_avg": {
+        "cost": 8.588892857142858,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 8.588892857142858,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 7.364688888888888,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 2.9528000000000003,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 7.364688888888885,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 2.9528000000000003,
+        "runtime": null
+      }
+    }
+  },
+  "medium-135.in": {
+    "best": "opt_sorted_central_basic",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 44.205681818181915,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 44.205681818181915,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 44.205681818181915,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 44.205681818181915,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 44.205681818181915,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 42.404033613445506,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 43.77386363636375,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 43.32310606060613,
+        "runtime": null
+      }
+    }
+  },
+  "medium-136.in": {
+    "best": "optimized_solver_1_sorted",
+    "data": {
+      "opt_sorted_central_basic": {
+        "cost": 45.57116666666666,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 44.1334558823529,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 52.661005847953156,
+        "runtime": null
+      },
+      "opt_sorted_central_avg": {
+        "cost": 47.063538461538464,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 45.981366666666695,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 37.175560606060614,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 37.175560606060614,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 52.46795263157889,
+        "runtime": null
+      }
+    }
+  },
+  "medium-137.in": {
+    "best": "betweenness_solver",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 4.4,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 4.1454545454545455,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 4.1454545454545455,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 4.1454545454545455,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 4.1454545454545455,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 4.175824175824176,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 3.890909090909091,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 4.290909090909091,
+        "runtime": null
+      }
+    }
+  },
+  "medium-139.in": {
+    "best": "optimized_solver_1_sorted",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 31.939393939393938,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 31.933333333333334,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 27.454545454545453,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 27.454545454545453,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 31.381818181818183,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 34.743589743589745,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 33.93939393939394,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 27.454545454545453,
+        "runtime": null
+      }
+    }
+  },
+  "medium-14.in": {
+    "best": "optimized_solver_1",
+    "data": {
+      "optimized_solver_1_sorted": {
+        "cost": 0.015666666666666666,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 0.015666666666666666,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 0.01566666666666667,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 30.0,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 0.01566666666666665,
+        "runtime": null
+      },
+      "opt_sorted_central_avg": {
+        "cost": 0.015666666666666666,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 0.01566666666666667,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 30.0,
+        "runtime": null
+      }
+    }
+  },
+  "medium-140.in": {
+    "best": "opt_sorted_central_avg",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 3.0,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 3.0,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 3.0,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 3.0,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 3.0,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 3.0,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 3.0,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 3.0,
+        "runtime": null
+      }
+    }
+  },
+  "medium-141.in": {
+    "best": "betweenness_solver",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 9.532773109243697,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 9.532773109243697,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 9.532773109243697,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 9.532773109243697,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 10.365079365079366,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 9.076190476190476,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 8.786786786786786,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 8.786786786786786,
+        "runtime": null
+      }
+    }
+  },
+  "medium-143.in": {
+    "best": "opt_sorted_central_basic",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 52.74166666666667,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 62.38095238095238,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 66.83823529411765,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 66.83823529411765,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 51.98095238095238,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 50.93333333333333,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 57.41025641025641,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 60.779411764705884,
+        "runtime": null
+      }
+    }
+  },
+  "medium-145.in": {
+    "best": "opt_sorted_central_avg",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 104.20536540240518,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 104.20536540240518,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 104.20536540240518,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 104.20536540240518,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 104.20536540240518,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 104.20536540240518,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 104.20536540240518,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 104.20536540240518,
+        "runtime": null
+      }
+    }
+  },
+  "medium-146.in": {
+    "best": "opt_sorted_central_avg",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 10.536844444444446,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 12.878500000000003,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 12.878500000000003,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 12.878500000000003,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 10.536844444444446,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 12.638711111111116,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 11.974266666666672,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 19.189121212121208,
+        "runtime": null
+      }
+    }
+  },
+  "medium-147.in": {
+    "best": "opt_sorted_central_avg",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 14.666666666666666,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 25.11111111111111,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 17.714285714285715,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 20.133333333333333,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 20.357142857142858,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 19.714285714285715,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 19.714285714285715,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 24.0,
+        "runtime": null
+      }
+    }
+  },
+  "medium-148.in": {
+    "best": "opt_sorted_central_avg",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 5.2,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 5.4,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 5.2,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 5.2,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 5.2,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 5.4,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 5.4,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 5.4,
+        "runtime": null
+      }
+    }
+  },
+  "medium-15.in": {
+    "best": "shortest_path_solver",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 77.85788142292486,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 77.85788142292486,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 77.85788142292486,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 77.85788142292486,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 77.85788142292486,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 79.63217391304362,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 73.88417316017325,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 72.2895968379447,
+        "runtime": null
+      }
+    }
+  },
+  "medium-150.in": {
+    "best": "opt_sorted_central_avg",
+    "data": {
+      "shortest_path_solver": {
+        "cost": 22.401209677419356,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 22.401209677419356,
+        "runtime": null
+      },
+      "opt_sorted_central_avg": {
+        "cost": 22.318548387096776,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 22.828629032258064,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 22.828629032258064,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 22.828629032258064,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 22.318548387096776,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 23.583333333333332,
+        "runtime": null
+      }
+    }
+  },
+  "medium-151.in": {
+    "best": "betweenness_solver",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 10.133333333333333,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 7.933333333333334,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 7.933333333333334,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 7.933333333333334,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 7.5,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 8.857142857142858,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 7.2,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 8.4,
+        "runtime": null
+      }
+    }
+  },
+  "medium-152.in": {
+    "best": "shortest_path_solver",
+    "data": {
+      "betweenness_solver": {
+        "cost": 77.33539804964552,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 86.50171365248228,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 79.52451152482273,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 79.52451152482273,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 79.52451152482273,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 77.3243173758868,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 86.50171365248238,
+        "runtime": null
+      },
+      "opt_sorted_central_avg": {
+        "cost": 79.7313563829787,
+        "runtime": null
+      }
+    }
+  },
+  "medium-153.in": {
+    "best": "opt_sorted_central_avg",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 64.72545454545453,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 64.72545454545453,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 64.72545454545453,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 64.72545454545453,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 64.72545454545453,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 64.72545454545453,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 64.72545454545453,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 64.72545454545455,
+        "runtime": null
+      }
+    }
+  },
+  "medium-154.in": {
+    "best": "optimized_solver_1_sorted",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 4.822463768115942,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 4.647058823529412,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 4.561904761904762,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 4.647058823529412,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 4.790513833992095,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 4.6,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 5.137254901960785,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 4.917748917748917,
+        "runtime": null
+      }
+    }
+  },
+  "medium-155.in": {
+    "best": "optimized_solver_1",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 67.3406,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 66.56615204678364,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 69.39352046783628,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 69.39352046783628,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 69.97454248366013,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 67.54447186147179,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 77.61804761904763,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 79.16579473684205,
+        "runtime": null
+      }
+    }
+  },
+  "medium-156.in": {
+    "best": "optimized_solver_1",
+    "data": {
+      "optimized_solver_1": {
+        "cost": 60.12776608187134,
+        "runtime": null
+      },
+      "opt_sorted_central_avg": {
+        "cost": 60.12776608187136,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 60.47890058479533,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 60.12776608187136,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 60.12776608187136,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 60.12776608187136,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 60.4789005847953,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 60.47890058479531,
+        "runtime": null
+      }
+    }
+  },
+  "medium-157.in": {
+    "best": "betweenness_solver",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 45.135557312252956,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 45.135557312252956,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 45.135557312252956,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 45.135557312252956,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 45.135557312252956,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 45.13555731225295,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 45.13555731225294,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 45.13555731225294,
+        "runtime": null
+      }
+    }
+  },
+  "medium-158.in": {
+    "best": "shortest_path_solver",
+    "data": {
+      "betweenness_solver": {
+        "cost": 16.972643678160974,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 16.972643678160953,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 16.972643678160956,
+        "runtime": null
+      },
+      "opt_sorted_central_avg": {
+        "cost": 17.04860215053768,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 17.048602150537686,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 17.04860215053768,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 17.04860215053768,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 17.04860215053768,
+        "runtime": null
+      }
+    }
+  },
+  "medium-159.in": {
+    "best": "betweenness_solver",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 0.4666666666666666,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 0.39999999999999997,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 0.39999999999999997,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 0.39999999999999997,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 0.4666666666666666,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 0.4666666666666666,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 0.3333333333333333,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 0.3333333333333333,
+        "runtime": null
+      }
+    }
+  },
+  "medium-16.in": {
+    "best": "opt_sorted_central_basic",
+    "data": {
+      "betweenness_solver": {
+        "cost": 33.813793103448276,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 32.172413793103445,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 37.660215053763444,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 35.082661290322584,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 35.082661290322584,
+        "runtime": null
+      },
+      "opt_sorted_central_avg": {
+        "cost": 35.082661290322584,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 36.2752688172043,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 30.675862068965518,
+        "runtime": null
+      }
+    }
+  },
+  "medium-160.in": {
+    "best": "betweenness_solver",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 47.428833333333365,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 50.881583333333325,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 47.428833333333365,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 47.428833333333365,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 47.428833333333365,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 45.66324999999996,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 43.49566666666665,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 43.49566666666667,
+        "runtime": null
+      }
+    }
+  },
+  "medium-161.in": {
+    "best": "betweenness_solver",
+    "data": {
+      "betweenness_solver": {
+        "cost": 34.82804232804233,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 34.82804232804233,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 34.82804232804233,
+        "runtime": null
+      },
+      "opt_sorted_central_avg": {
+        "cost": 34.82804232804233,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 34.82804232804233,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 34.82804232804233,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 34.82804232804233,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 34.82804232804233,
+        "runtime": null
+      }
+    }
+  },
+  "medium-162.in": {
+    "best": "betweenness_solver",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 49.874657894736764,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 49.874657894736764,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 49.874657894736764,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 49.874657894736764,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 49.874657894736764,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 44.301323809523794,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 41.6068157894737,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 44.416105263157924,
+        "runtime": null
+      }
+    }
+  },
+  "medium-163.in": {
+    "best": "shortest_path_solver",
+    "data": {
+      "betweenness_solver": {
+        "cost": 84.067567567568,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 98.86415362731204,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 84.00028449502187,
+        "runtime": null
+      },
+      "opt_sorted_central_avg": {
+        "cost": 89.61152204836517,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 93.53015647226258,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 89.61152204836517,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 89.61152204836517,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 89.61152204836517,
+        "runtime": null
+      }
+    }
+  },
+  "medium-164.in": {
+    "best": "opt_sorted_central_avg",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 5.666666666666667,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 5.666666666666667,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 5.666666666666667,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 5.666666666666667,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 5.666666666666667,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 5.666666666666667,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 5.666666666666667,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 5.666666666666667,
+        "runtime": null
+      }
+    }
+  },
+  "medium-166.in": {
+    "best": "opt_sorted_central_avg",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 12.552911111111113,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 12.552911111111113,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 12.552911111111113,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 12.552911111111113,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 12.552911111111113,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 14.004872727272724,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 13.47305454545455,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 13.1896,
+        "runtime": null
+      }
+    }
+  },
+  "medium-167.in": {
+    "best": "shortest_path_solver",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 4.890476190476191,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 4.890476190476191,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 4.890476190476191,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 4.890476190476191,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 4.890476190476191,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 4.593333333333334,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 4.647619047619047,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 4.647619047619047,
+        "runtime": null
+      }
+    }
+  },
+  "medium-168.in": {
+    "best": "opt_sorted_central_avg",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 10.200189393939379,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 10.200189393939379,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 10.200189393939379,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 10.200189393939379,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 10.200189393939379,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 10.363190730837779,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 10.363190730837761,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 10.36319073083776,
+        "runtime": null
+      }
+    }
+  },
+  "medium-169.in": {
+    "best": "opt_sorted_central_avg",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 25.834764705882343,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 32.57563742690058,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 25.834764705882343,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 26.997738562091495,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 25.834764705882343,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 27.544608187134497,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 26.787052287581687,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 26.79923333333334,
+        "runtime": null
+      }
+    }
+  },
+  "medium-17.in": {
+    "best": "optimized_solver_1",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 28.164116666666654,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 20.830681318681318,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 20.830681318681318,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 20.830681318681318,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 29.51842500000001,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 27.284733333333342,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 25.99211428571429,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 26.579009523809514,
+        "runtime": null
+      }
+    }
+  },
+  "medium-170.in": {
+    "best": "betweenness_solver",
+    "data": {
+      "optimized_solver_1": {
+        "cost": 57.43589743589744,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 57.43589743589744,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 57.43589743589744,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 56.666666666666664,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 56.666666666666664,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 56.666666666666664,
+        "runtime": null
+      },
+      "opt_sorted_central_avg": {
+        "cost": 57.43589743589744,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 57.43589743589744,
+        "runtime": null
+      }
+    }
+  },
+  "medium-171.in": {
+    "best": "opt_sorted_central_basic",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 9.828999999999999,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 6.102333333333333,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 6.102333333333333,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 6.102333333333333,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 6.873047619047619,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 4.3508,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 7.5120000000000005,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 6.521,
+        "runtime": null
+      }
+    }
+  },
+  "medium-172.in": {
+    "best": "opt_sorted_central_basic",
+    "data": {
+      "opt_sorted_central_basic": {
+        "cost": 8.390476190476193,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 9.478787878787879,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 9.478787878787879,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 9.478787878787879,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 8.502564102564099,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 9.478787878787879,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 8.558823529411761,
+        "runtime": null
+      },
+      "opt_sorted_central_avg": {
+        "cost": 9.478787878787879,
+        "runtime": null
+      }
+    }
+  },
+  "medium-173.in": {
+    "best": "opt_sorted_central_avg",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 171.92103427419346,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 171.92103427419346,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 171.92103427419346,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 171.92103427419346,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 171.92103427419346,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 182.4827943548387,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 171.9210342741935,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 171.92103427419346,
+        "runtime": null
+      }
+    }
+  },
+  "medium-174.in": {
+    "best": "opt_sorted_central_only",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 124.28476190476196,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 112.55523809523811,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 109.81352380952383,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 109.81352380952383,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 101.80109890109894,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 108.29923809523811,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 112.83409523809522,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 126.1857142857143,
+        "runtime": null
+      }
+    }
+  },
+  "medium-175.in": {
+    "best": "opt_sorted_central_avg",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 338.788111702128,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 338.788111702128,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 338.788111702128,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 338.788111702128,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 338.788111702128,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 338.7881117021281,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 338.788111702128,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 338.78811170212816,
+        "runtime": null
+      }
+    }
+  },
+  "medium-176.in": {
+    "best": "betweenness_solver",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 24.82051282051282,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 26.736263736263737,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 26.736263736263737,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 26.736263736263737,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 24.82051282051282,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 24.512820512820515,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 24.82051282051282,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 24.512820512820515,
+        "runtime": null
+      }
+    }
+  },
+  "medium-177.in": {
+    "best": "opt_sorted_central_basic",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 0.9772190476190478,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 1.0695108225108223,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 0.9086190476190478,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 1.0695108225108223,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 0.9132770562770566,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 0.868863157894737,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 0.8989263157894739,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 0.8989263157894741,
+        "runtime": null
+      }
+    }
+  },
+  "medium-178.in": {
+    "best": "opt_sorted_central_only",
+    "data": {
+      "opt_sorted_central_basic": {
+        "cost": 3.7289473684210526,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 3.537581699346405,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 3.488970588235294,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 3.746732026143791,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 3.041208791208791,
+        "runtime": null
+      },
+      "opt_sorted_central_avg": {
+        "cost": 3.5166666666666666,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 3.746732026143791,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 3.746732026143791,
+        "runtime": null
+      }
+    }
+  },
+  "medium-179.in": {
+    "best": "betweenness_solver",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 53.90416666666667,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 66.38235294117646,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 53.90416666666667,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 66.38235294117646,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 53.90416666666667,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 53.76797385620915,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 51.516666666666666,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 61.63970588235294,
+        "runtime": null
+      }
+    }
+  },
+  "medium-18.in": {
+    "best": "opt_sorted_central_avg",
+    "data": {
+      "betweenness_solver": {
+        "cost": 179.1123931623932,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 173.41936243386263,
+        "runtime": null
+      },
+      "opt_sorted_central_avg": {
+        "cost": 168.03658689458723,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 168.03658689458723,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 168.03658689458723,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 171.56641871921187,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 170.67363692307714,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 168.03658689458723,
+        "runtime": null
+      }
+    }
+  },
+  "medium-180.in": {
+    "best": "betweenness_solver",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 279.1101449275364,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 279.1101449275364,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 279.1101449275364,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 279.1101449275364,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 279.1101449275364,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 290.7608695652185,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 208.12500000000065,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 208.1250000000009,
+        "runtime": null
+      }
+    }
+  },
+  "medium-181.in": {
+    "best": "opt_sorted_central_basic",
+    "data": {
+      "betweenness_solver": {
+        "cost": 59.13638596491227,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 59.13638596491228,
+        "runtime": null
+      },
+      "opt_sorted_central_avg": {
+        "cost": 60.33809356725144,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 70.27821978021973,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 60.33809356725144,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 60.33809356725144,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 60.33809356725144,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 57.20840522875821,
+        "runtime": null
+      }
+    }
+  },
+  "medium-182.in": {
+    "best": "betweenness_solver",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 13.921052631578947,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 13.136842105263158,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 13.921052631578947,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 13.921052631578947,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 13.921052631578947,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 12.33786231884058,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 11.91991341991342,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 11.91991341991342,
+        "runtime": null
+      }
+    }
+  },
+  "medium-183.in": {
+    "best": "opt_sorted_central_basic",
+    "data": {
+      "betweenness_solver": {
+        "cost": 28.3833619047619,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 28.38336190476192,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 27.447209523809505,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 33.99582246376811,
+        "runtime": null
+      },
+      "opt_sorted_central_avg": {
+        "cost": 34.00381818181818,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 34.00381818181818,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 33.99582246376808,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 34.00381818181818,
+        "runtime": null
+      }
+    }
+  },
+  "medium-184.in": {
+    "best": "opt_sorted_central_basic",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 20.10144927536232,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 20.10144927536232,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 20.10144927536232,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 20.10144927536232,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 20.10144927536232,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 17.706666666666667,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 17.866666666666667,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 17.866666666666667,
+        "runtime": null
+      }
+    }
+  },
+  "medium-185.in": {
+    "best": "betweenness_solver",
+    "data": {
+      "opt_sorted_central_basic": {
+        "cost": 98.54277310924371,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 98.1080941176465,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 98.10809411764683,
+        "runtime": null
+      },
+      "opt_sorted_central_avg": {
+        "cost": 98.10809411764659,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 98.10809411764659,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 98.10809411764659,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 98.10809411764659,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 98.10809411764659,
+        "runtime": null
+      }
+    }
+  },
+  "medium-186.in": {
+    "best": "betweenness_solver",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 23.006410256410263,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 21.17022222222223,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 20.30363636363636,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 20.30363636363636,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 25.78151515151516,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 18.91309090909092,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 14.588888888888887,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 14.588888888888896,
+        "runtime": null
+      }
+    }
+  },
+  "medium-187.in": {
+    "best": "optimized_solver_1_sorted",
+    "data": {
+      "betweenness_solver": {
+        "cost": 10.249257575757582,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 10.24925757575758,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 10.24925757575758,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 7.555611111111111,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 7.555611111111111,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 7.555611111111111,
+        "runtime": null
+      },
+      "opt_sorted_central_avg": {
+        "cost": 12.839321428571433,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 8.983607142857142,
+        "runtime": null
+      }
+    }
+  },
+  "medium-188.in": {
+    "best": "shortest_path_solver",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 73.57148571428567,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 80.39593464052297,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 80.39593464052297,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 80.39593464052297,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 66.75771895424838,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 78.24555844155854,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 72.20091228070176,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 66.25981699346407,
+        "runtime": null
+      }
+    }
+  },
+  "medium-19.in": {
+    "best": "opt_sorted_central_basic",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 1.64,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 2.2266666666666666,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 2.2266666666666666,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 2.2266666666666666,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 1.64,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 0.15,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 2.61,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 2.61,
+        "runtime": null
+      }
+    }
+  },
+  "medium-190.in": {
+    "best": "optimized_solver_1",
+    "data": {
+      "opt_sorted_central_basic": {
+        "cost": 1.6733333333333331,
+        "runtime": null
+      },
+      "opt_sorted_central_avg": {
+        "cost": 0.9066666666666667,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 0.9066666666666667,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 0.3,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 0.3,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 0.3,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 0.3,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 0.3266666666666666,
+        "runtime": null
+      }
+    }
+  },
+  "medium-191.in": {
+    "best": "betweenness_solver",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 19.3883010752687,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 19.3883010752687,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 19.3883010752687,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 19.3883010752687,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 19.3883010752687,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 18.24749999999997,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 18.08519540229879,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 18.085195402298798,
+        "runtime": null
+      }
+    }
+  },
+  "medium-192.in": {
+    "best": "opt_sorted_central_basic",
+    "data": {
+      "betweenness_solver": {
+        "cost": 6.826933333333334,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 12.038571428571426,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 6.826933333333333,
+        "runtime": null
+      },
+      "opt_sorted_central_avg": {
+        "cost": 8.470666666666668,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 7.084999999999999,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 7.084999999999999,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 7.084999999999999,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 13.539333333333332,
+        "runtime": null
+      }
+    }
+  },
+  "medium-193.in": {
+    "best": "betweenness_solver",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 1.0266666666666666,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 0.7599999999999999,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 0.7599999999999999,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 0.7599999999999999,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 1.0266666666666666,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 0.7599999999999999,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 0.28333333333333327,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 0.39833333333333326,
+        "runtime": null
+      }
+    }
+  },
+  "medium-194.in": {
+    "best": "optimized_solver_1_sorted",
+    "data": {
+      "betweenness_solver": {
+        "cost": 30.261051383399185,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 27.68400790513838,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 27.91421343873519,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 27.684007905138326,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 27.684007905138326,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 27.68400790513836,
+        "runtime": null
+      },
+      "opt_sorted_central_avg": {
+        "cost": 27.684007905138326,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 27.684007905138326,
+        "runtime": null
+      }
+    }
+  },
+  "medium-195.in": {
+    "best": "betweenness_solver",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 39.241025641025644,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 35.461818181818174,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 35.19111111111112,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 39.971212121212126,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 37.97454545454548,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 33.393406593406596,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 32.88681318681317,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 34.149450549450556,
+        "runtime": null
+      }
+    }
+  },
+  "medium-196.in": {
+    "best": "optimized_solver_1_sorted",
+    "data": {
+      "betweenness_solver": {
+        "cost": 4.166666666666667,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 6.0,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 4.166666666666667,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 3.5,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 3.5,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 3.5,
+        "runtime": null
+      },
+      "opt_sorted_central_avg": {
+        "cost": 3.5,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 3.5,
+        "runtime": null
+      }
+    }
+  },
+  "medium-198.in": {
+    "best": "betweenness_solver",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 6.2262,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 5.3984000000000005,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 5.3984000000000005,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 5.3984000000000005,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 5.316599999999999,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 7.7854,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 5.221999999999999,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 5.222,
+        "runtime": null
+      }
+    }
+  },
+  "medium-199.in": {
+    "best": "optimized_solver_1_sorted_allPaths",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 78.80190043290041,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 78.80190043290042,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 78.80190043290041,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 72.4770380952381,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 78.80190043290041,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 78.80190043290042,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 75.98345021645021,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 75.98345021645024,
+        "runtime": null
+      }
+    }
+  },
+  "medium-20.in": {
+    "best": "opt_sorted_central_avg",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 7.0,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 7.0,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 7.0,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 7.0,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 7.0,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 7.0,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 7.0,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 7.0,
+        "runtime": null
+      }
+    }
+  },
+  "medium-200.in": {
+    "best": "betweenness_solver",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 65.81653538461538,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 65.81653538461538,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 65.81653538461538,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 65.81653538461538,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 65.81653538461538,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 65.81653538461543,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 65.41947578347573,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 65.41947578347585,
+        "runtime": null
+      }
+    }
+  },
+  "medium-201.in": {
+    "best": "opt_sorted_central_basic",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 23.4472564102564,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 25.659121212121207,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 23.4472564102564,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 23.4472564102564,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 23.447256410256408,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 18.275018181818176,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 18.27501818181818,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 18.27501818181818,
+        "runtime": null
+      }
+    }
+  },
+  "medium-202.in": {
+    "best": "shortest_path_solver",
+    "data": {
+      "opt_sorted_central_basic": {
+        "cost": 100.12884057971019,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 94.15846666666663,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 82.1810276679842,
+        "runtime": null
+      },
+      "opt_sorted_central_avg": {
+        "cost": 83.63796536796542,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 87.76097826086962,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 87.76097826086962,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 86.6611857707511,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 94.32980000000008,
+        "runtime": null
+      }
+    }
+  },
+  "medium-203.in": {
+    "best": "opt_sorted_central_avg",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 8.836363636363636,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 8.836363636363636,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 8.836363636363636,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 8.836363636363636,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 8.836363636363636,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 8.836363636363636,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 8.836363636363636,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 8.836363636363636,
+        "runtime": null
+      }
+    }
+  },
+  "medium-204.in": {
+    "best": "opt_sorted_central_avg",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 0.5,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 0.5,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 0.5,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 0.5,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 0.5,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 0.5,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 0.5,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 0.5,
+        "runtime": null
+      }
+    }
+  },
+  "medium-205.in": {
+    "best": "opt_sorted_central_avg",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 422.23225806451615,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 422.2451612903226,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 422.23225806451615,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 422.23225806451615,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 422.23225806451615,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 422.23225806451615,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 422.2451612903226,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 422.2451612903226,
+        "runtime": null
+      }
+    }
+  },
+  "medium-206.in": {
+    "best": "betweenness_solver",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 13.21939140534259,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 10.52358743961345,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 10.52358743961345,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 10.523587439613449,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 12.448484848484688,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 10.52358743961345,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 9.89807003546091,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 9.907122340425486,
+        "runtime": null
+      }
+    }
+  },
+  "medium-207.in": {
+    "best": "opt_sorted_central_basic",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 6.372000000000002,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 7.362733333333334,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 7.362733333333334,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 7.362733333333334,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 10.659142857142857,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 4.2892,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 5.5662666666666665,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 5.5662666666666665,
+        "runtime": null
+      }
+    }
+  },
+  "medium-208.in": {
+    "best": "opt_sorted_central_basic",
+    "data": {
+      "opt_sorted_central_basic": {
+        "cost": 17.337799999999998,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 17.3378,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 17.3378,
+        "runtime": null
+      },
+      "opt_sorted_central_avg": {
+        "cost": 17.3378,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 17.3378,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 17.3378,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 17.3378,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 17.3378,
+        "runtime": null
+      }
+    }
+  },
+  "medium-209.in": {
+    "best": "optimized_solver_1",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 22.646400000000003,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 22.6464,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 22.646400000000003,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 22.646400000000003,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 22.646400000000003,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 22.646400000000003,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 25.254,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 25.254,
+        "runtime": null
+      }
+    }
+  },
+  "medium-21.in": {
+    "best": "betweenness_solver",
+    "data": {
+      "optimized_solver_1": {
+        "cost": 76.5479999999999,
+        "runtime": null
+      },
+      "opt_sorted_central_avg": {
+        "cost": 59.42067647058826,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 59.42067647058826,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 59.42067647058826,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 59.42067647058826,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 75.093294736842,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 56.61742647058825,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 68.85646783625728,
+        "runtime": null
+      }
+    }
+  },
+  "medium-210.in": {
+    "best": "opt_sorted_central_avg",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 212.24798387096774,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 212.24798387096774,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 212.24798387096774,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 212.24798387096774,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 212.24798387096774,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 212.24798387096774,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 212.24798387096774,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 212.24798387096774,
+        "runtime": null
+      }
+    }
+  },
+  "medium-211.in": {
+    "best": "opt_sorted_central_avg",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 51.87948333333335,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 57.66331666666663,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 58.68899166666666,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 58.68899166666666,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 51.879483333333354,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 64.67688333333332,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 74.68820879120877,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 73.4055619047619,
+        "runtime": null
+      }
+    }
+  },
+  "medium-212.in": {
+    "best": "opt_sorted_central_basic",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 136.61660079051384,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 148.31620553359684,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 136.61660079051384,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 136.61660079051384,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 136.61660079051384,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 109.11111111111111,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 109.80952380952381,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 143.5954415954416,
+        "runtime": null
+      }
+    }
+  },
+  "medium-213.in": {
+    "best": "opt_sorted_central_basic",
+    "data": {
+      "opt_sorted_central_basic": {
+        "cost": 67.95402298850574,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 67.95402298850574,
+        "runtime": null
+      },
+      "opt_sorted_central_avg": {
+        "cost": 67.95402298850574,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 67.95402298850574,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 67.95402298850574,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 67.95402298850574,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 67.95402298850574,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 67.95402298850574,
+        "runtime": null
+      }
+    }
+  },
+  "medium-214.in": {
+    "best": "betweenness_solver",
+    "data": {
+      "opt_sorted_central_avg": {
+        "cost": 25.588637362637375,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 57.00176923076922,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 25.555212121212122,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 26.05916666666667,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 23.449727272727273,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 23.106181818181827,
+        "runtime": null
+      },
+      "betweenness_solver": {
+        "cost": 22.22999999999999,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 22.848733333333332,
+        "runtime": null
+      }
+    }
+  },
+  "medium-215.in": {
+    "best": "optimized_solver_1_sorted",
+    "data": {
+      "betweenness_solver": {
+        "cost": 33.88310256410258,
+        "runtime": null
+      },
+      "shortest_path_solver": {
+        "cost": 32.15187179487181,
+        "runtime": null
+      },
+      "opt_sorted_central_basic": {
+        "cost": 31.20375757575759,
+        "runtime": null
+      },
+      "opt_sorted_central_only": {
+        "cost": 44.91719696969699,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted": {
+        "cost": 30.31170909090909,
+        "runtime": null
+      },
+      "opt_sorted_central_avg": {
+        "cost": 41.76048484848482,
+        "runtime": null
+      },
+      "optimized_solver_1_sorted_allPaths": {
+        "cost": 31.112025641025657,
+        "runtime": null
+      },
+      "optimized_solver_1": {
+        "cost": 30.31170909090909,
+        "runtime": null
+      }
+    }
   }
 }

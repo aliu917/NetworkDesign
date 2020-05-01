@@ -1,5 +1,36 @@
 # CS 170 Project Spring 2020
 
+# By KruskalKrew - Angela Liu, Kevin Liu, and Jenny Wang
+
+### Dependencies
+python
+networkx
+
+### Running all solvers
+```
+python parallel_runner_v1.py our_inputs/<type of graph> our_outputs/<type of graph> <cache type>
+```
+type of graph - small, medium, large
+cache type - none, some, all
+
+For example, to run on medium-sized outputs without pulling past outputs from the cache:
+```
+python parallel_runner_v1.py our_inputs/medium our_outputs/medium none
+```
+
+### Gathering the submission data
+
+```
+python submission.py 
+
+<at the prompt "Please enter a solver name.">
+combined_solver
+```
+Be sure to remove all DS_Store files
+
+
+### Project Start Info
+
 Take a look at the project spec before you get started!
 
 Requirements:

@@ -30,6 +30,8 @@ combined_solver
 ```
 Be sure to remove all DS_Store files
 
+Our submission outputs then appear in the outputs/ folder
+
 
 ## Project Start Info
 

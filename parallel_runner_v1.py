@@ -134,7 +134,7 @@ def main():
     manager.start()
 
     # Create NUM_THREADS or NUM_THREADS+1 threads
-    NUM_THREADS = 4
+    NUM_THREADS = 5
     INPUTS_PER_SAVE = 10
 
     NUM_THREADS = min(INPUTS_PER_SAVE, NUM_THREADS)

@@ -5,8 +5,6 @@ from collections import defaultdict
 from os import makedirs
 from os.path import join, isfile, dirname
 import json
-from parse import write_output_file
-
 
 
 def is_valid_network(G, T):
@@ -116,7 +114,8 @@ class Cacher():
         self.NEVER_USE_CACHE_FILENAME = "never_use_cache.txt"
         self.OUTPUT_DIRECTORY = OUTPUT_DIRECTORY
         self.PREV_OUTPUTS_FILENAME = join(OUTPUT_DIRECTORY, 'all_prev_outputs.txt')
-
+        from parse import write_output_file
+        self.write_output_file = write_output_file
         assert cache_type == "all" or cache_type == "some" or cache_type == "none"
         self.cache_type = cache_type
         self.cache_exceptions = []
@@ -185,7 +184,7 @@ class Cacher():
                 or self.get_cost(input_filename, solver_filename) > cost:
 
             makedirs(dirname(out_file), exist_ok=True)
-            write_output_file(tree, out_file)
+            self.write_output_file(tree, out_file)
 
             self.cache(input_filename, solver_filename, cost, runtime)
 
